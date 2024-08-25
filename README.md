@@ -12,10 +12,10 @@ This product was built to be a web interface designed for creating, managing, re
 ***
 
 # What does the UI look like?
-![Users Interface](README_images\users.png)
+![Users Interface](https://github.com/Pat-7-626/ku-polls/blob/iteration1/README_images/users.png)
 Users Interface
 
-![Admin Interface](README_images\admin.png)
+![Admin Interface](https://github.com/Pat-7-626/ku-polls/blob/iteration1/README_images/admin.png)
 Admin Interface
 ***
 
