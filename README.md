@@ -15,10 +15,10 @@ This product was built to be a web application designed for creating, managing, 
 ***
 
 # What does the UI look like?
-![Users Interface](https://github.com/Pat-7-626/ku-polls/blob/iteration1/README_images/users.png)
+![Users Interface](../../blob/iteration1/README_images/users.png)
 Users Interface
 
-![Admin Interface](https://github.com/Pat-7-626/ku-polls/blob/iteration1/README_images/admin.png)
+![Admin Interface](../../blob/iteration1/README_images/admin.png)
 Admin Interface
 ***
 
@@ -28,10 +28,10 @@ Admin Interface
 ***
 
 # Links to other docs and info
- - [Vision and Scope](https://github.com/Pat-7-626/ku-polls/wiki/Vision-and-Scope)
- - [Requirements](https://github.com/Pat-7-626/ku-polls/wiki/Requirements)
- - [Project Plan](https://github.com/Pat-7-626/ku-polls/wiki/Project-Plan)
+ - [Vision and Scope](../../wiki/Vision-and-Scope)
+ - [Requirements](../../wiki/Requirements)
+ - [Project Plan](../../wiki/Project-Plan)
  - Iterations
-   - [Iteration 1 Plan](https://github.com/Pat-7-626/ku-polls/wiki/Iteration-1-Plan)
+   - [Iteration 1 Plan](../../wiki/Iteration-1-Plan)
 
 ***
