@@ -4,6 +4,9 @@
 ##### Author: Pattharamon Dumrongkittikule 6610545472  
 ##### Revised: 25-08-2024
 
+##### The application to conduct online polls and surveys based on the [Django Tutorial project](https://docs.djangoproject.com/en/4.1/intro/tutorial01/), with additional features.
+
+##### This application was created as a part of the [Individual Software Process](https://cpske.github.io/ISP) course at [Kasetsart University](https://www.ku.ac.th).
 ***
 
 # What does this application do?
