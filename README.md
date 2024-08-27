@@ -10,7 +10,7 @@
 ***
 
 # What does this application do?
-This product was built to be a web interface designed for creating, managing, responding to, and seeing the results of polls and surveys, exclusively for the KU community.
+This product was built to be a web application designed for creating, managing, responding to, and seeing the results of polls and surveys, exclusively for the KU community.
 
 ***
 
