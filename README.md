@@ -36,5 +36,6 @@ Admin Interface
  - [Project Plan](../../wiki/Project-Plan)
  - Iterations
    - [Iteration 1 Plan](../../wiki/Iteration-1-Plan)
+   - [Iteration 2 Plan](../../wiki/Iteration-2-Plan)
 
 ---
