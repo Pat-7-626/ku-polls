@@ -186,3 +186,35 @@ class IsPublishedTests(TestCase):
             list(response.context['latest_question_list']),
             [question2, question1],
         )
+
+
+class CanVoteTests(TestCase):
+    def test_cannot_vote_after_end_date(self):
+        """
+        Can not vote for questions after the end date.
+        """
+        question = create_question_2(question_text="future question 1.",
+                                     start=-2, end=-1)
+        url = reverse('polls:detail', args=(question.id,))
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 404)
+
+    def test_cannot_vote_before_start_date(self):
+        """
+        Can not vote for questions before the start date.
+        """
+        question = create_question_2(question_text="future question 1.",
+                                     start=1, end=2)
+        url = reverse('polls:detail', args=(question.id,))
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 404)
+
+    def test_past_can_vote_between_period(self):
+        """
+        Can vote for questions between the polling period.
+        """
+        question = create_question_2(question_text="future question 1.",
+                                     start=-1, end=2)
+        url = reverse('polls:detail', args=(question.id,))
+        response = self.client.get(url)
+        self.assertContains(response, question.question_text)
