@@ -13,14 +13,13 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """
-        Return the last five published questions (not including those set to be
-        published in the future and that have not closed yet.).
+        Return the last five published questions, not including those set to be
+        published in the future or that have already been closed.
         """
-        now = timezone.now()
         return Question.objects.filter(
-            pub_date__lte=now
+            pub_date__lte=timezone.now()
         ).filter(
-            Q(end_date__gte=now) | Q(end_date__isnull=True)
+            Q(end_date__gte=timezone.now()) | Q(end_date__isnull=True)
         ).order_by('-pub_date')[:5]
 
 
@@ -30,9 +29,12 @@ class DetailView(generic.DetailView):
 
     def get_queryset(self):
         """
-        Excludes any questions that aren't published yet.
+        Excludes any questions that aren't published yet
+        or that have already been closed.
         """
-        return Question.objects.filter(pub_date__lte=timezone.now())
+        return (Question.objects.filter(pub_date__lte=timezone.now())
+                .filter(Q(end_date__gte=timezone.now()) |
+                        Q(end_date__isnull=True)))
 
 
 class ResultsView(generic.DetailView):
