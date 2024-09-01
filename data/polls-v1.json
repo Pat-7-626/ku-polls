@@ -1,42 +1,69 @@
 [
 {
   "model": "polls.question",
-  "pk": 2,
+  "pk": 1,
   "fields": {
     "question_text": "Do you think medical experiment on animals is justified?",
-    "pub_date": "2024-08-25T02:50:55Z"
+    "pub_date": "2024-08-25T07:13:16Z"
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 2,
+  "fields": {
+    "question_text": "What is the most pressing ethical concern regarding AI in surveillance in your opinion?",
+    "pub_date": "2024-08-25T07:14:55Z"
   }
 },
 {
   "model": "polls.question",
   "pk": 3,
   "fields": {
-    "question_text": "What is the most pressing ethical concern regarding AI in surveillance in your opinion?",
-    "pub_date": "2024-08-25T02:54:42Z"
+    "question_text": "Is a tomato a fruit or a vegetable?",
+    "pub_date": "2024-08-25T07:15:27Z"
   }
 },
 {
   "model": "polls.question",
   "pk": 4,
   "fields": {
-    "question_text": "Is a tomato a fruit or a vegetable?",
-    "pub_date": "2024-08-25T03:10:50Z"
+    "question_text": "What is the meaning of life in your opinion?",
+    "pub_date": "2024-08-25T07:17:43Z"
   }
 },
 {
   "model": "polls.question",
   "pk": 5,
   "fields": {
-    "question_text": "What is the meaning of life in your opinion?",
-    "pub_date": "2024-08-25T03:14:43Z"
+    "question_text": "Should science try to revive extinct creatures?",
+    "pub_date": "2024-08-25T07:18:22Z"
   }
 },
 {
-  "model": "polls.question",
-  "pk": 6,
+  "model": "polls.choice",
+  "pk": 1,
   "fields": {
-    "question_text": "Should science try to revive extinct creatures?",
-    "pub_date": "2024-08-25T03:25:25Z"
+    "question": 1,
+    "choice_text": "Yes",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 2,
+  "fields": {
+    "question": 1,
+    "choice_text": "No",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 3,
+  "fields": {
+    "question": 2,
+    "choice_text": "The potential invasion of privacy and loss of civil liberties.",
+    "votes": 0
   }
 },
 {
@@ -44,7 +71,7 @@
   "pk": 4,
   "fields": {
     "question": 2,
-    "choice_text": "Yes",
+    "choice_text": "The accuracy and reliability of AI systems in identifying individuals and behaviors.",
     "votes": 0
   }
 },
@@ -53,7 +80,7 @@
   "pk": 5,
   "fields": {
     "question": 2,
-    "choice_text": "No",
+    "choice_text": "The risk of AI being used for malicious purposes, such as unauthorized data access or manipulation.",
     "votes": 0
   }
 },
@@ -62,7 +89,7 @@
   "pk": 6,
   "fields": {
     "question": 3,
-    "choice_text": "The potential invasion of privacy and loss of civil liberties.",
+    "choice_text": "It's a fruit.",
     "votes": 0
   }
 },
@@ -71,7 +98,7 @@
   "pk": 7,
   "fields": {
     "question": 3,
-    "choice_text": "The accuracy and reliability of AI systems in identifying individuals and behaviors.",
+    "choice_text": "It's a vegetable.",
     "votes": 0
   }
 },
@@ -79,8 +106,8 @@
   "model": "polls.choice",
   "pk": 8,
   "fields": {
-    "question": 4,
-    "choice_text": "It's a fruit.",
+    "question": 3,
+    "choice_text": "It's actually both.",
     "votes": 0
   }
 },
@@ -89,7 +116,7 @@
   "pk": 9,
   "fields": {
     "question": 4,
-    "choice_text": "It's a vegetable.",
+    "choice_text": "Existentialism: Life has no inherent meaning, we create our own purpose through our choices and actions.",
     "votes": 0
   }
 },
@@ -98,7 +125,7 @@
   "pk": 10,
   "fields": {
     "question": 4,
-    "choice_text": "It's actually both.",
+    "choice_text": "Absurdism: Life is inherently meaningless, but we should embrace and find joy in the struggle to understand it.",
     "votes": 0
   }
 },
@@ -106,8 +133,8 @@
   "model": "polls.choice",
   "pk": 11,
   "fields": {
-    "question": 5,
-    "choice_text": "Existentialism: Life has no inherent meaning, we create our own purpose through our choices and actions.",
+    "question": 4,
+    "choice_text": "Utilitarianism: The meaning of life is to maximize happiness and minimize suffering for the most people.",
     "votes": 0
   }
 },
@@ -115,8 +142,8 @@
   "model": "polls.choice",
   "pk": 12,
   "fields": {
-    "question": 5,
-    "choice_text": "Absurdism: Life is inherently meaningless, but we should embrace and find joy in the struggle to understand it.",
+    "question": 4,
+    "choice_text": "Theism: Life's meaning comes from following a divine plan or higher power.",
     "votes": 0
   }
 },
@@ -124,18 +151,18 @@
   "model": "polls.choice",
   "pk": 13,
   "fields": {
-    "question": 6,
-    "choice_text": "Yes",
-    "votes": 1
+    "question": 4,
+    "choice_text": "Nihilism: Life has no inherent meaning or value.",
+    "votes": 0
   }
 },
 {
   "model": "polls.choice",
   "pk": 14,
   "fields": {
-    "question": 6,
-    "choice_text": "No",
-    "votes": 1
+    "question": 5,
+    "choice_text": "Yes",
+    "votes": 0
   }
 },
 {
@@ -143,34 +170,7 @@
   "pk": 15,
   "fields": {
     "question": 5,
-    "choice_text": "Utilitarianism: The meaning of life is to maximize happiness and minimize suffering for the most people.",
-    "votes": 0
-  }
-},
-{
-  "model": "polls.choice",
-  "pk": 16,
-  "fields": {
-    "question": 5,
-    "choice_text": "Theism: Life's meaning comes from following a divine plan or higher power.",
-    "votes": 0
-  }
-},
-{
-  "model": "polls.choice",
-  "pk": 17,
-  "fields": {
-    "question": 5,
-    "choice_text": "Nihilism: Life has no inherent meaning or value.",
-    "votes": 0
-  }
-},
-{
-  "model": "polls.choice",
-  "pk": 18,
-  "fields": {
-    "question": 3,
-    "choice_text": "The risk of AI being used for malicious purposes, such as unauthorized data access or manipulation.",
+    "choice_text": "No",
     "votes": 0
   }
 }
