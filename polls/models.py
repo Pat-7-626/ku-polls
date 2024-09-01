@@ -21,6 +21,15 @@ class Question(models.Model):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
+    @admin.display(
+        boolean=True,
+        ordering='end_date',
+        description='is closed?',
+    )
+    def is_closed(self):
+        now = timezone.now()
+        return self.end_date is not None and self.end_date <= now
+
 
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)

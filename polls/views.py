@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.urls import reverse
 from django.views import generic
 from .models import Choice, Question
+from django.db.models import Q
 
 
 class IndexView(generic.ListView):
@@ -13,10 +14,12 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         """
         Return the last five published questions (not including those set to be
-        published in the future).
+        published in the future and that have not closed yet.).
         """
         return Question.objects.filter(
             pub_date__lte=timezone.now()
+        ).filter(
+            Q(end_date__gt=timezone.now()) | Q(end_date__isnull=True)
         ).order_by('-pub_date')[:5]
 
 
