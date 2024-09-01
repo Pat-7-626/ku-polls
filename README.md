@@ -1,6 +1,5 @@
 
 ---
-![CI](../../workflows/ci.yml/badge.svg)
 
 ## KU Polls Project
 Author: Pattharamon Dumrongkittikule 6610545472  
