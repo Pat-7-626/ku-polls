@@ -1,0 +1,44 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+li a {
+    color: white;
+    padding: 1%;
+}
+
+h1 {
+    color: white;
+    padding: 2%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+h3 {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0.5% 0.5%;
+    display: inline-block;
+}
+
+body {
+    background: url("images/background.png") no-repeat center center fixed;
+    background-size: cover;
+}
+
+input[type="submit"] {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    margin-left: 1%;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+label {
+    color: white;
+}
