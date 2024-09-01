@@ -13,12 +13,13 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.11'
+        python-version: '3.11'  # Use your desired Python version
 
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
 
-    - name: Run specific test
+    - name: Set up Django environment
       run: |
-        python -m unittest polls.tests
+        export DJANGO_SETTINGS_MODULE=mysite.settings
+        python manage.py test polls
