@@ -16,7 +16,7 @@ class IndexView(generic.ListView):
         Return the last five published questions, not including those set to be
         published in the future or that have already been closed.
         """
-        return Question.objects.filter(
+        return Question.objects.filter(  # use can_vote logic
             pub_date__lte=timezone.now()
         ).filter(
             Q(end_date__gte=timezone.now()) | Q(end_date__isnull=True)
@@ -32,9 +32,9 @@ class DetailView(generic.DetailView):
         Excludes any questions that aren't published yet
         or that have already been closed.
         """
-        return (Question.objects.filter(pub_date__lte=timezone.now())
-                .filter(Q(end_date__gte=timezone.now()) |
-                        Q(end_date__isnull=True)))
+        return (Question.objects.filter(  # use can_vote logic
+            pub_date__lte=timezone.now()).filter(
+            Q(end_date__gte=timezone.now()) | Q(end_date__isnull=True)))
 
 
 class ResultsView(generic.DetailView):
