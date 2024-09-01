@@ -1,0 +1,58 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+body {
+    background: url("images/background.png") no-repeat center center fixed;
+    background-size: cover;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1%;
+}
+
+.choice-text {
+    flex: 1;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0.5% 1%;
+    border-radius: 0.1%;
+}
+
+.choice-votes {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0.5% 1%;
+    border-radius: 1%;
+}
+
+h1 {
+    color: white;
+    padding: 1%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+input[type="submit"] {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    margin: 1%;
+    border-radius: 1%;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: rgba(0, 0, 0, 1);
+}
+

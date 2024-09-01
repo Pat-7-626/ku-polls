@@ -4,7 +4,8 @@
   "pk": 1,
   "fields": {
     "question_text": "Do you think medical experiment on animals is justified?",
-    "pub_date": "2024-08-25T07:13:16Z"
+    "pub_date": "2024-08-25T07:13:16Z",
+    "end_date": null
   }
 },
 {
@@ -12,7 +13,8 @@
   "pk": 2,
   "fields": {
     "question_text": "What is the most pressing ethical concern regarding AI in surveillance in your opinion?",
-    "pub_date": "2024-08-25T07:14:55Z"
+    "pub_date": "2024-08-25T07:14:55Z",
+    "end_date": null
   }
 },
 {
@@ -20,7 +22,8 @@
   "pk": 3,
   "fields": {
     "question_text": "Is a tomato a fruit or a vegetable?",
-    "pub_date": "2024-08-25T07:15:27Z"
+    "pub_date": "2024-08-25T07:15:27Z",
+    "end_date": null
   }
 },
 {
@@ -28,7 +31,8 @@
   "pk": 4,
   "fields": {
     "question_text": "What is the meaning of life in your opinion?",
-    "pub_date": "2024-08-25T07:17:43Z"
+    "pub_date": "2024-09-01T12:36:59Z",
+    "end_date": "2024-09-01T15:24:40Z"
   }
 },
 {
@@ -36,7 +40,8 @@
   "pk": 5,
   "fields": {
     "question_text": "Should science try to revive extinct creatures?",
-    "pub_date": "2024-08-25T07:18:22Z"
+    "pub_date": "2024-09-30T12:37:06Z",
+    "end_date": null
   }
 },
 {
@@ -45,7 +50,7 @@
   "fields": {
     "question": 1,
     "choice_text": "Yes",
-    "votes": 0
+    "votes": 1
   }
 },
 {
@@ -54,7 +59,7 @@
   "fields": {
     "question": 1,
     "choice_text": "No",
-    "votes": 0
+    "votes": 1
   }
 },
 {
@@ -90,7 +95,7 @@
   "fields": {
     "question": 3,
     "choice_text": "It's a fruit.",
-    "votes": 0
+    "votes": 6
   }
 },
 {
@@ -99,7 +104,7 @@
   "fields": {
     "question": 3,
     "choice_text": "It's a vegetable.",
-    "votes": 0
+    "votes": 1
   }
 },
 {
@@ -108,7 +113,7 @@
   "fields": {
     "question": 3,
     "choice_text": "It's actually both.",
-    "votes": 0
+    "votes": 1
   }
 },
 {
@@ -117,7 +122,7 @@
   "fields": {
     "question": 4,
     "choice_text": "Existentialism: Life has no inherent meaning, we create our own purpose through our choices and actions.",
-    "votes": 0
+    "votes": 1
   }
 },
 {
@@ -162,7 +167,7 @@
   "fields": {
     "question": 5,
     "choice_text": "Yes",
-    "votes": 0
+    "votes": 8
   }
 },
 {
@@ -171,7 +176,7 @@
   "fields": {
     "question": 5,
     "choice_text": "No",
-    "votes": 0
+    "votes": 1
   }
 }
 ]

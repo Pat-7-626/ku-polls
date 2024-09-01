@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.urls import reverse
 from django.views import generic
 from .models import Choice, Question
+from django.db.models import Q
 
 
 class IndexView(generic.ListView):
@@ -12,12 +13,11 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """
-        Return the last five published questions (not including those set to be
-        published in the future).
+        Return the last five published questions, not including those set to be
+        published in the future or that have already been closed.
         """
-        return Question.objects.filter(
-            pub_date__lte=timezone.now()
-        ).order_by('-pub_date')[:5]
+        questions = Question.objects.order_by('-pub_date')
+        return [question for question in questions if question.can_vote()][:5]
 
 
 class DetailView(generic.DetailView):
@@ -26,9 +26,12 @@ class DetailView(generic.DetailView):
 
     def get_queryset(self):
         """
-        Excludes any questions that aren't published yet.
+        Excludes any questions that aren't published yet
+        or that have already been closed.
         """
-        return Question.objects.filter(pub_date__lte=timezone.now())
+        return (Question.objects.filter(  # use can_vote logic
+            pub_date__lte=timezone.localtime()).filter(
+            Q(end_date__gte=timezone.localtime()) | Q(end_date__isnull=True)))
 
 
 class ResultsView(generic.DetailView):
