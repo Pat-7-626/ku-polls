@@ -21,4 +21,4 @@ jobs:
 
     - name: Run specific test
       run: |
-        python -m unittest ../../../polls/tests.py
+        python -m unittest polls.tests
