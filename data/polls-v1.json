@@ -1,7 +1,7 @@
 [
 {
   "model": "polls.question",
-  "pk": 1,
+  "pk": 2,
   "fields": {
     "question_text": "Do you think medical experiment on animals is justified?",
     "pub_date": "2024-08-25T02:50:55Z"
@@ -9,7 +9,7 @@
 },
 {
   "model": "polls.question",
-  "pk": 2,
+  "pk": 3,
   "fields": {
     "question_text": "What is the most pressing ethical concern regarding AI in surveillance in your opinion?",
     "pub_date": "2024-08-25T02:54:42Z"
@@ -17,7 +17,7 @@
 },
 {
   "model": "polls.question",
-  "pk": 3,
+  "pk": 4,
   "fields": {
     "question_text": "Is a tomato a fruit or a vegetable?",
     "pub_date": "2024-08-25T03:10:50Z"
@@ -25,7 +25,7 @@
 },
 {
   "model": "polls.question",
-  "pk": 4,
+  "pk": 5,
   "fields": {
     "question_text": "What is the meaning of life in your opinion?",
     "pub_date": "2024-08-25T03:14:43Z"
@@ -33,7 +33,7 @@
 },
 {
   "model": "polls.question",
-  "pk": 5,
+  "pk": 6,
   "fields": {
     "question_text": "Should science try to revive extinct creatures?",
     "pub_date": "2024-08-25T03:25:25Z"
@@ -43,7 +43,7 @@
   "model": "polls.choice",
   "pk": 4,
   "fields": {
-    "question": 1,
+    "question": 2,
     "choice_text": "Yes",
     "votes": 0
   }
@@ -52,7 +52,7 @@
   "model": "polls.choice",
   "pk": 5,
   "fields": {
-    "question": 1,
+    "question": 2,
     "choice_text": "No",
     "votes": 0
   }
@@ -61,7 +61,7 @@
   "model": "polls.choice",
   "pk": 6,
   "fields": {
-    "question": 2,
+    "question": 3,
     "choice_text": "The potential invasion of privacy and loss of civil liberties.",
     "votes": 0
   }
@@ -70,7 +70,7 @@
   "model": "polls.choice",
   "pk": 7,
   "fields": {
-    "question": 2,
+    "question": 3,
     "choice_text": "The accuracy and reliability of AI systems in identifying individuals and behaviors.",
     "votes": 0
   }
@@ -79,7 +79,7 @@
   "model": "polls.choice",
   "pk": 8,
   "fields": {
-    "question": 3,
+    "question": 4,
     "choice_text": "It's a fruit.",
     "votes": 0
   }
@@ -88,7 +88,7 @@
   "model": "polls.choice",
   "pk": 9,
   "fields": {
-    "question": 3,
+    "question": 4,
     "choice_text": "It's a vegetable.",
     "votes": 0
   }
@@ -97,7 +97,7 @@
   "model": "polls.choice",
   "pk": 10,
   "fields": {
-    "question": 3,
+    "question": 4,
     "choice_text": "It's actually both.",
     "votes": 0
   }
@@ -106,7 +106,7 @@
   "model": "polls.choice",
   "pk": 11,
   "fields": {
-    "question": 4,
+    "question": 5,
     "choice_text": "Existentialism: Life has no inherent meaning, we create our own purpose through our choices and actions.",
     "votes": 0
   }
@@ -115,7 +115,7 @@
   "model": "polls.choice",
   "pk": 12,
   "fields": {
-    "question": 4,
+    "question": 5,
     "choice_text": "Absurdism: Life is inherently meaningless, but we should embrace and find joy in the struggle to understand it.",
     "votes": 0
   }
@@ -124,7 +124,7 @@
   "model": "polls.choice",
   "pk": 13,
   "fields": {
-    "question": 5,
+    "question": 6,
     "choice_text": "Yes",
     "votes": 1
   }
@@ -133,7 +133,7 @@
   "model": "polls.choice",
   "pk": 14,
   "fields": {
-    "question": 5,
+    "question": 6,
     "choice_text": "No",
     "votes": 1
   }
@@ -142,7 +142,7 @@
   "model": "polls.choice",
   "pk": 15,
   "fields": {
-    "question": 4,
+    "question": 5,
     "choice_text": "Utilitarianism: The meaning of life is to maximize happiness and minimize suffering for the most people.",
     "votes": 0
   }
@@ -151,7 +151,7 @@
   "model": "polls.choice",
   "pk": 16,
   "fields": {
-    "question": 4,
+    "question": 5,
     "choice_text": "Theism: Life's meaning comes from following a divine plan or higher power.",
     "votes": 0
   }
@@ -160,7 +160,7 @@
   "model": "polls.choice",
   "pk": 17,
   "fields": {
-    "question": 4,
+    "question": 5,
     "choice_text": "Nihilism: Life has no inherent meaning or value.",
     "votes": 0
   }
@@ -169,7 +169,7 @@
   "model": "polls.choice",
   "pk": 18,
   "fields": {
-    "question": 2,
+    "question": 3,
     "choice_text": "The risk of AI being used for malicious purposes, such as unauthorized data access or manipulation.",
     "votes": 0
   }

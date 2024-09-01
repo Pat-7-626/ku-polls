@@ -24,7 +24,7 @@ class Question(models.Model):
     @admin.display(
         boolean=True,
         ordering='end_date',
-        description='is closed?',
+        description='Is closed?',
     )
     def is_closed(self):
         now = timezone.now()

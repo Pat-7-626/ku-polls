@@ -16,10 +16,11 @@ class IndexView(generic.ListView):
         Return the last five published questions (not including those set to be
         published in the future and that have not closed yet.).
         """
+        now = timezone.now()
         return Question.objects.filter(
-            pub_date__lte=timezone.now()
+            pub_date__lte=now
         ).filter(
-            Q(end_date__gt=timezone.now()) | Q(end_date__isnull=True)
+            Q(end_date__gte=now) | Q(end_date__isnull=True)
         ).order_by('-pub_date')[:5]
 
 
