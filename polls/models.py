@@ -12,23 +12,30 @@ class Question(models.Model):
     def __str__(self):
         return self.question_text
 
-    @admin.display(
-        boolean=True,
-        ordering='pub_date',
-        description='Published recently?',
-    )
     def was_published_recently(self):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
     @admin.display(
         boolean=True,
+        ordering='pub_date',
+        description='Published?',
+    )
+    def is_published(self):
+        now = timezone.localtime()
+        return self.pub_date <= now
+
+    @admin.display(
+        boolean=True,
         ordering='end_date',
-        description='Is closed?',
+        description='Closed?',
     )
     def is_closed(self):
-        now = timezone.now()
+        now = timezone.localtime()
         return self.end_date is not None and self.end_date <= now
+
+    def can_vote(self):
+        return self.is_published() and not self.is_closed()
 
 
 class Choice(models.Model):
