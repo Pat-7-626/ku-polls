@@ -1,6 +1,12 @@
-name: CI
+name: Django CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -13,13 +19,20 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.11'  # Use your desired Python version
+        python-version: '3.11'
 
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
 
-    - name: Set up Django environment
+    - name: Set environment variables
       run: |
-        export DJANGO_SETTINGS_MODULE=mysite.settings
+        echo "DJANGO_SETTINGS_MODULE=mysite.settings" >> $GITHUB_ENV
+
+    - name: Print environment variables
+      run: |
+        echo "DJANGO_SETTINGS_MODULE: $DJANGO_SETTINGS_MODULE"
+
+    - name: Run Django tests
+      run: |
         python manage.py test polls
