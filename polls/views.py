@@ -4,8 +4,10 @@ from django.utils import timezone
 from django.urls import reverse
 from django.views import generic
 from .models import Choice, Question
-from django.db.models import Q
+from django.db.models import Q, F
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from .models import Choice, Question, Vote
 
 
 class IndexView(generic.ListView):
@@ -55,11 +57,23 @@ def vote(request, question_id):
             'question': question,
             'error_message': "You didn't select a choice.",
         })
-    else:
-        selected_choice.votes += 1
-        selected_choice.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        return HttpResponseRedirect(reverse('polls:results',
-                                            args=(question.id,)))
+
+    # Reference to the current user
+    this_user = request.user
+
+    # Get the user's vote
+    try:
+        # vote = user.vote_set.get(choice.question=question)
+        vote = Vote.objects.get(user=this_user, choice__question=question)
+        # User has a vote for this question! Update his choice.
+        vote.choice = selected_choice
+        vote.save()
+        messages.success(request, f"Your vote was changed to '{selected_choice.choice_text}'")
+    except Vote.DoesNotExist:
+        vote = Vote.objects.create(user=this_user, choice=selected_choice)
+        # Does not have to vote yet
+        # Auto save
+        messages.success(request, f"Your vote was changed to '{selected_choice.choice_text}'")
+    selected_choice = F("votes") + 1
+    selected_choice.save()
+    return HttpResponseRedirect(reverse('polls:results', args=(question)))
