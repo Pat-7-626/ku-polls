@@ -70,10 +70,10 @@ def vote(request, question_id):
         vote.save()
         messages.success(request, f"Your vote was changed to '{selected_choice.choice_text}'")
     except Vote.DoesNotExist:
-        vote = Vote.objects.create(user=this_user, choice=selected_choice)
+        Vote.objects.create(user=this_user, choice=selected_choice)
         # Does not have to vote yet
         # Auto save
         messages.success(request, f"Your vote was changed to '{selected_choice.choice_text}'")
-    selected_choice = F("votes") + 1
+    selected_choice.votes = F("votes") + 1
     selected_choice.save()
-    return HttpResponseRedirect(reverse('polls:results', args=(question)))
+    return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
