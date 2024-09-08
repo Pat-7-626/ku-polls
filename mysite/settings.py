@@ -141,29 +141,31 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
-    "formatters": {
-        "verbose": {
-            "format": "[{asctime}] {levelname}: {message}",
-            "style": "{",
-        },
-        "simple": {
-            "format": "{levelname} {message}",
-            "style": "{",
-        },
-    },
-    "handlers": {
-        "console": {
+
+    'handlers': {
+        'console': {
             'class': 'logging.StreamHandler',
-            "level": "DEBUG",
-            "formatter": "verbose",
+            'level': 'DEBUG',
+            'formatter': 'verbose',
         },
     },
-    "loggers": {
-        "": {
-            "level": "DEBUG",
-            "handlers": ["console"],
-            "polls": {...},
-            "polls.views": {...},
+
+    'loggers': {
+        'polls': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+        },
+        'polls.views': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+            'propagate': False,
+        },
+    },
+
+    'formatters': {
+        'simple': {
+            'format': '{asctime} {module} {levelname} {message}',
+            'style': '{',
         },
     },
 }
