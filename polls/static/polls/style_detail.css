@@ -11,7 +11,7 @@ li a {
 
 h1 {
     color: white;
-    padding: 2%;
+    padding: 1%;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -41,4 +41,15 @@ input[type="submit"]:hover {
 
 label {
     color: white;
+}
+
+.messages {
+    list-style-type: none;
+    color: plum;
+    font-weight: bold;
+}
+
+fieldset {
+    border: solid plum;
+    background-color: rgba(0,0,0,0.2);
 }

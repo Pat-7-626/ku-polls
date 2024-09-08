@@ -17,24 +17,22 @@ ul {
 
 li {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     margin-bottom: 1%;
+    margin-top: 1%;
 }
 
 .choice-text {
     flex: 1;
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
-    padding: 0.5% 1%;
-    border-radius: 0.1%;
+    padding: 0.5% 10%;
 }
 
 .choice-votes {
     color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 0.5% 1%;
-    border-radius: 1%;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 0.5% 10%;
 }
 
 h1 {
@@ -56,3 +54,13 @@ input[type="submit"]:hover {
     background-color: rgba(0, 0, 0, 1);
 }
 
+.messages {
+    list-style-type: none;
+    color: aquamarine;
+    font-weight: bold;
+}
+
+fieldset {
+    border: solid aquamarine;
+    background-color: rgba(0,0,0,0.2);
+}

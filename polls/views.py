@@ -1,10 +1,9 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect
 from django.utils import timezone
 from django.urls import reverse
 from django.views import generic
-from .models import Choice, Question
-from django.db.models import Q, F
+from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Choice, Question, Vote
@@ -46,15 +45,14 @@ class ResultsView(generic.DetailView):
 def vote(request, question_id):
     """Vote for one of the answers to a question."""
     question = get_object_or_404(Question, pk=question_id)
+    messages.get_messages(request).used = True
 
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
         # Redisplay the question voting form.
-        return render(request, 'polls/detail.html', {
-            'question': question,
-            'error_message': "You didn't select a choice.",
-        })
+        messages.error(request, "You didn't select a choice.")
+        return redirect('polls:detail', pk=question_id)
 
     # Reference to the current user
     this_user = request.user

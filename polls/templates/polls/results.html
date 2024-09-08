@@ -3,15 +3,25 @@
 
 <h1>{{ question.question_text }}</h1>
 
-<ul>
-{% for choice in question.choice_set.all %}
-    <li class="choice-item">
-        <div class="choice-text">{{ choice.choice_text }}</div>
-        <div class="choice-votes">{{ choice.votes }}</div>
-    </li>
-{% endfor %}
-</ul>
+<fieldset>
+    {% if messages %}
+    <ul class="messages">
+        {% for msg in messages %}
+            <li class="{{msg.tags}}">{{ msg }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <ul>
+        {% for choice in question.choice_set.all %}
+            <li class="choice-item">
+                <div class="choice-text">{{ choice.choice_text }}</div>
+                <div class="choice-votes">{{ choice.votes }}</div>
+            </li>
+        {% endfor %}
+    </ul>
+</fieldset>
 
 <form action="{% url 'polls:index' %}" method="get">
     <input type="submit" value="Back to List of Polls"/>
 </form>
+    
