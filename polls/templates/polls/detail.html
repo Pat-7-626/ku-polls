@@ -24,10 +24,10 @@
     <input type="submit" value="Vote">
 </form>
 
-<form action="{% url 'polls:index' %}" method="get">
-    <input type="submit" value="Back to List of Polls" />
-</form>
-
 <form action="{% url 'polls:results' question.id %}" method="get">
     <input type="submit" value="Results" />
+</form>
+
+<form action="{% url 'polls:index' %}" method="get">
+    <input type="submit" value="Back to List of Polls" />
 </form>

@@ -24,9 +24,10 @@ input[type="submit"] {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
-    margin: 1%;
     border-radius: 1%;
+    margin-left: 2%;
     cursor: pointer;
+    padding: 0.5% 1%;
 }
 
 input[type="submit"]:hover {

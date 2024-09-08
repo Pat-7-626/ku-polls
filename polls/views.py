@@ -71,7 +71,7 @@ def vote(request, question_id):
         Vote.objects.create(user=this_user, choice=selected_choice)
         # Does not have to vote yet
         # Auto save
-        messages.success(request, f"Your vote was changed to '{selected_choice.choice_text}'")
+        messages.success(request, f"Your vote was submitted to '{selected_choice.choice_text}'")
     return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
 

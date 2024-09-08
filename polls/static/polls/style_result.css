@@ -48,6 +48,7 @@ input[type="submit"] {
     margin: 1%;
     border-radius: 1%;
     cursor: pointer;
+    padding: 0.5% 1%;
 }
 
 input[type="submit"]:hover {
