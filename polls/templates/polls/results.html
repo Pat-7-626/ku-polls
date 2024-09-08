@@ -1,17 +1,43 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'polls/style_result.css' %}">
 
-<h1>{{ question.question_text }}</h1>
+{% if user.is_authenticated %}
+         <h1>KU Polls | Welcome back, {{ user.username }}</h1>
+        <form action="{% url 'logout' %}" method="post"> 
+            {% csrf_token %} 
+            <input type="submit" value="Logout" />
+        </form>
+    {% else %}
+            <h1>KU Polls | Please login to vote</h1>
+            <form action="{% url 'login' %}" method="post"> 
+            {% csrf_token %} 
+            <input type="submit" value="Login" />
+        </form>
+    {% endif %}
 
-<ul>
-{% for choice in question.choice_set.all %}
-    <li class="choice-item">
-        <div class="choice-text">{{ choice.choice_text }}</div>
-        <div class="choice-votes">{{ choice.votes }}</div>
-    </li>
-{% endfor %}
-</ul>
+<fieldset>
+<h2>{{ question.question_text }}</h2>
+    {% if messages %}
+    <ul class="messages">
+        {% for msg in messages %}
+            <li class="{{msg.tags}}">{{ msg }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <table>
+        {% for choice in question.choice_set.all %}
+            <tr>
+                <td class="choice-text">{{ choice.choice_text }}</td>
+                <td class="choice-votes">{{ choice.votes }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</fieldset>
 
-<form action="{% url 'polls:index' %}" method="get">
-    <input type="submit" value="Back to List of Polls"/>
+<form action="{% url 'polls:detail' question.id %}" method="get" class="inline-form">
+    <input type="submit" value="Back to Vote" />
+</form>
+
+<form action="{% url 'polls:index' %}" method="get" class="inline-form">
+    <input type="submit" value="List of Polls" />
 </form>

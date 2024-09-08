@@ -4,15 +4,28 @@ html, body {
     margin: 0;
 }
 
+body {
+    background: url("../images/background.png") no-repeat center center fixed;
+    background-size: cover;
+}
+
 h1 {
     color: white;
     padding: 1%;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-body {
-    background: url("../images/background.png") no-repeat center center fixed;
-    background-size: cover;
+.instructions {
+    color: aquamarine;
+    margin: 0.5% 5% 0.5% 0.5%;
+    padding-left: 1%;
+    line-height: 1.5;
+    background-color: rgba(0,0,0,0.5);
+}
+
+strong {
+    color: white;
+    padding-left: 5%;
 }
 
 input[type="submit"] {
@@ -29,12 +42,12 @@ input[type="submit"]:hover {
     background-color: rgba(0, 0, 0, 1);
 }
 
-a {
-    text-decoration: none;
+label {
     color: white;
-    font-weight: bold;
 }
 
-ul {
+.messages {
     list-style-type: none;
+    color: plum;
+    font-weight: bold;
 }

@@ -1,0 +1,71 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'registration/style_signup.css' %}">
+
+<h1>Register</h1>
+
+{% if messages %}
+    <ul class="messages">
+        {% for msg in messages %}
+            <li class="{{msg.tags}}">{{ msg }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td style="vertical-align: top; width: 20%;">
+                <strong>Username:</strong>
+            </td>
+            <td>
+                {{ form.username }}<br>
+                <p class="instructions">Required. 150 characters or fewer. Letters, digits, and @/./+/-/_ only.</p>
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="vertical-align: top;">
+                <strong>Password:</strong>
+            </td>
+            <td>
+                {{ form.password1 }}<br>
+                <p class="instructions">
+                    Your password can’t be too similar to your other personal information.<br>
+                    Your password must contain at least 8 characters.<br>
+                    Your password can’t be a commonly used password.<br>
+                    Your password can’t be entirely numeric.
+                </p>
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="vertical-align: top;">
+                <strong>Password confirmation:</strong>
+            </td>
+            <td>
+                {{ form.password2 }}<br>
+                <p class="instructions">Enter the same password as before, for verification.</p>
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="vertical-align: top;">
+                <strong>Password-based authentication:</strong>
+            </td>
+            <td>
+                <label><input type="radio" name="password_auth" value="enabled" checked /> Enabled</label><br>
+                <label><input type="radio" name="password_auth" value="disabled" /> Disabled</label><br>
+                <p class="instructions">
+                    Whether the user will be able to authenticate using a password or not. If disabled, they may still be able to authenticate using other backends, such as Single Sign-On or LDAP.
+                </p>
+            </td>
+        </tr>
+        
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Register" />
+            </td>
+        </tr>
+    </table>
+</form>

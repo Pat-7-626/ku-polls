@@ -1,0 +1,31 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'registration/style_login.css' %}">
+
+<html>
+    <body>
+        <h1>Login</h1>
+        <form method="post">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>{{ form.username.label_tag }}</td>
+                    <td>{{ form.username }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.password.label_tag }}</td>
+                    <td>{{ form.password }}</td>
+                </tr>
+                <input type="submit" value="Login" />
+                <input type="hidden" name="next" value="{{ next }}"/>
+            </table>
+        </form>
+        
+        <form action="{% url 'signup' %}" method="get" class="inline-form">
+            <input type="submit" value="Signup" />
+        </form>
+    
+        <form action="{% url 'polls:index' %}" method="get" class="inline-form">
+            <input type="submit" value="Go as Guest (Can not vote)" />
+        </form>
+    </body>
+</html>

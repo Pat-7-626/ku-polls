@@ -1,10 +1,14 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.utils import timezone
 from django.urls import reverse
 from django.views import generic
-from .models import Choice, Question
 from django.db.models import Q
+from django.contrib import messages
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from .models import Choice, Question, Vote
 
 
 class IndexView(generic.ListView):
@@ -39,21 +43,67 @@ class ResultsView(generic.DetailView):
     template_name = 'polls/results.html'
 
 
+@login_required
 def vote(request, question_id):
+    """Vote for one of the answers to a question."""
     question = get_object_or_404(Question, pk=question_id)
+    messages.get_messages(request).used = True
+
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
         # Redisplay the question voting form.
-        return render(request, 'polls/detail.html', {
-            'question': question,
-            'error_message': "You didn't select a choice.",
-        })
+        messages.error(request, "You didn't select a choice.")
+        return redirect('polls:detail', pk=question_id)
+
+    # Reference to the current user
+    this_user = request.user
+
+    # Get the user's vote
+    try:
+        # vote = user.vote_set.get(choice.question=question)
+        vote = Vote.objects.get(user=this_user, choice__question=question)
+        # User has a vote for this question! Update his choice.
+        vote.choice = selected_choice
+        vote.save()
+        messages.success(request, f"Your vote was changed to '{selected_choice.choice_text}'")
+    except Vote.DoesNotExist:
+        Vote.objects.create(user=this_user, choice=selected_choice)
+        # Does not have to vote yet
+        # Auto save
+        messages.success(request, f"Your vote was submitted to '{selected_choice.choice_text}'")
+    return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+
+def signup(request):
+    """Register a new user."""
+    messages.get_messages(request).used = True
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # get named fields from the form data
+            username = form.cleaned_data.get('username')
+            # password input field is named 'password1'
+            raw_passwd = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_passwd)
+            login(request, user)
+            return redirect('polls:index')
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{field}: {error}")
     else:
-        selected_choice.votes += 1
-        selected_choice.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        return HttpResponseRedirect(reverse('polls:results',
-                                            args=(question.id,)))
+        # create a user form and display it the signup page
+        form = UserCreationForm()
+    return render(request, 'registration/signup.html', {'form': form})
+
+
+def get_client_ip(request):
+    """Get the visitor’s IP address using request headers."""
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip

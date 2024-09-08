@@ -4,9 +4,9 @@ html, body {
     margin: 0;
 }
 
-li a {
-    color: white;
-    padding: 1%;
+body {
+    background: url("../images/background.png") no-repeat center center fixed;
+    background-size: cover;
 }
 
 h1 {
@@ -15,15 +15,14 @@ h1 {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-h2 {
+table {
+    padding: 1%;
     color: white;
-    padding: 2% 0%;
-    white-space: nowrap;
 }
 
-body {
-    background: url("../images/background.png") no-repeat center center fixed;
-    background-size: cover;
+td {
+    padding: 5%;
+    width: 50%;
 }
 
 input[type="submit"] {
@@ -38,21 +37,6 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: rgba(0, 0, 0, 1);
-}
-
-label {
-    color: white;
-}
-
-.messages {
-    list-style-type: none;
-    color: plum;
-    font-weight: bold;
-}
-
-fieldset {
-    border: solid plum;
-    background-color: rgba(0,0,0,0.2);
 }
 
 .inline-form {
