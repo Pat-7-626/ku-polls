@@ -15,11 +15,10 @@ h1 {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-h3 {
+h2 {
     color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 0.5% 0.5%;
-    display: inline-block;
+    padding: 2% 0%;
+    white-space: nowrap;
 }
 
 body {
@@ -31,7 +30,8 @@ input[type="submit"] {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
-    margin-left: 1%;
+    margin: 1%;
+    border-radius: 1%;
     cursor: pointer;
     padding: 0.5% 1%;
 }
@@ -53,4 +53,22 @@ label {
 fieldset {
     border: solid plum;
     background-color: rgba(0,0,0,0.2);
+}
+
+.inline-form {
+    display: inline;
+}
+
+.inline-form input[type="submit"] {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    margin: 1%;
+    border-radius: 1%;
+    cursor: pointer;
+    padding: 0.5% 1%;
+}
+
+.inline-form input[type="submit"]:hover {
+    background-color: rgba(0, 0, 0, 1);
 }

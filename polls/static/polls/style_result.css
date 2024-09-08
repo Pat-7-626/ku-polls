@@ -9,36 +9,40 @@ body {
     background-size: cover;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+table {
+    width: 100%;
+    table-layout: fixed;
 }
 
-li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1%;
-    margin-top: 1%;
-}
-
-.choice-text {
-    flex: 1;
-    color: white;
+tr {
     background-color: rgba(0, 0, 0, 0.5);
-    padding: 0.5% 10%;
+    color: white;
+}
+
+td {
+    padding: 1%;
+}
+
+td.choice-text {
+    width: 90%;
+}
+
+td.choice-votes {
+    width: 10%;
 }
 
 .choice-votes {
-    color: white;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 0.5% 10%;
+    background-color: rgba(0, 0, 0, 1);
 }
 
 h1 {
     color: white;
     padding: 1%;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    color: white;
 }
 
 input[type="submit"] {
@@ -64,4 +68,22 @@ input[type="submit"]:hover {
 fieldset {
     border: solid aquamarine;
     background-color: rgba(0,0,0,0.2);
+}
+
+.inline-form {
+    display: inline;
+}
+
+.inline-form input[type="submit"] {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    margin: 1%;
+    border-radius: 1%;
+    cursor: pointer;
+    padding: 0.5% 1%;
+}
+
+.inline-form input[type="submit"]:hover {
+    background-color: rgba(0, 0, 0, 1);
 }
