@@ -28,7 +28,7 @@ DEBUG = config('DEBUG', cast=bool, default=False)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS',
                        default='localhost,127.0.0.1',
                        cast=Csv())
-
+MESSAGE_LEVEL = 20
 
 # Application definition
 

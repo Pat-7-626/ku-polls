@@ -2,6 +2,15 @@
 <link rel="stylesheet" href="{% static 'registration/style_signup.css' %}">
 
 <h1>Register</h1>
+
+{% if messages %}
+    <ul class="messages">
+        {% for msg in messages %}
+            <li class="{{msg.tags}}">{{ msg }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
 <form method="POST">
     {% csrf_token %}
     <table>
@@ -10,7 +19,7 @@
                 <strong>Username:</strong>
             </td>
             <td>
-                <input type="text" name="username" required maxlength="150" /><br>
+                {{ form.username }}<br>
                 <p class="instructions">Required. 150 characters or fewer. Letters, digits, and @/./+/-/_ only.</p>
             </td>
         </tr>
@@ -20,7 +29,7 @@
                 <strong>Password:</strong>
             </td>
             <td>
-                <input type="password" name="password" required minlength="8" /><br>
+                {{ form.password1 }}<br>
                 <p class="instructions">
                     Your password can’t be too similar to your other personal information.<br>
                     Your password must contain at least 8 characters.<br>
@@ -35,7 +44,7 @@
                 <strong>Password confirmation:</strong>
             </td>
             <td>
-                <input type="password" name="password_confirmation" required /><br>
+                {{ form.password2 }}<br>
                 <p class="instructions">Enter the same password as before, for verification.</p>
             </td>
         </tr>

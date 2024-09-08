@@ -17,7 +17,7 @@ h1 {
 
 .instructions {
     color: aquamarine;
-    margin: 1% 10% 1% 1%;
+    margin: 0.5% 5% 0.5% 0.5%;
     padding-left: 1%;
     line-height: 1.5;
     background-color: rgba(0,0,0,0.5);
@@ -43,4 +43,10 @@ input[type="submit"]:hover {
 
 label {
     color: white;
+}
+
+.messages {
+    list-style-type: none;
+    color: plum;
+    font-weight: bold;
 }

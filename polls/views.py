@@ -1,11 +1,13 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.utils import timezone
 from django.urls import reverse
 from django.views import generic
 from django.db.models import Q
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from .models import Choice, Question, Vote
 
 
@@ -71,3 +73,27 @@ def vote(request, question_id):
         # Auto save
         messages.success(request, f"Your vote was changed to '{selected_choice.choice_text}'")
     return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+
+def signup(request):
+    """Register a new user."""
+    messages.get_messages(request).used = True
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # get named fields from the form data
+            username = form.cleaned_data.get('username')
+            # password input field is named 'password1'
+            raw_passwd = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_passwd)
+            login(request, user)
+            return redirect('polls:index')
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{field}: {error}")
+    else:
+        # create a user form and display it the signup page
+        form = UserCreationForm()
+    return render(request, 'registration/signup.html', {'form': form})
