@@ -51,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'polls.middleware.LogUserLoginMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -142,6 +143,17 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
 
+    'formatters': {
+        'verbose': {
+            'format': '[{asctime}] {levelname} {name}: {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{asctime} {module} {levelname} {message}',
+            'style': '{',
+        },
+    },
+
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
@@ -154,18 +166,12 @@ LOGGING = {
         'polls': {
             'level': 'DEBUG',
             'handlers': ['console'],
+            'propagate': False,
         },
         'polls.views': {
             'level': 'DEBUG',
             'handlers': ['console'],
             'propagate': False,
-        },
-    },
-
-    'formatters': {
-        'simple': {
-            'format': '{asctime} {module} {levelname} {message}',
-            'style': '{',
         },
     },
 }

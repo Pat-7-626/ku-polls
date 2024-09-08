@@ -97,3 +97,13 @@ def signup(request):
         # create a user form and display it the signup page
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
+
+
+def get_client_ip(request):
+    """Get the visitor’s IP address using request headers."""
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
