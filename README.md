@@ -17,10 +17,10 @@ This product was built to be a web application designed for creating, managing, 
 ---
 
 ## The User Interface
-![Users Interface](../../blob/main/README_images/users.png)
+![Users Interface](README_images/users.png)
 Users Interface
 
-![Admin Interface](../../blob/main/README_images/admin.png)
+![Admin Interface](README_images/admin.png)
 Admin Interface
 
 ---
