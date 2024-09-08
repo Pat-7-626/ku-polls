@@ -4,9 +4,9 @@ html, body {
     margin: 0;
 }
 
-li a {
-    color: white;
-    padding: 1%;
+body {
+    background: url("../images/background.png") no-repeat center center fixed;
+    background-size: cover;
 }
 
 h1 {
@@ -15,16 +15,17 @@ h1 {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-h3 {
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 0.5% 0.5%;
-    display: inline-block;
+.instructions {
+    color: aquamarine;
+    margin: 1% 10% 1% 1%;
+    padding-left: 1%;
+    line-height: 1.5;
+    background-color: rgba(0,0,0,0.5);
 }
 
-body {
-    background: url("../images/background.png") no-repeat center center fixed;
-    background-size: cover;
+strong {
+    color: white;
+    padding-left: 5%;
 }
 
 input[type="submit"] {
@@ -38,4 +39,8 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: rgba(0, 0, 0, 1);
+}
+
+label {
+    color: white;
 }

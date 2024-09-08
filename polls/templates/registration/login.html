@@ -1,16 +1,19 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'registration/style_login.css' %}">
+
 <html>
-<body>
-<h2>Login</h2>
-<form method="post">
-  {% csrf_token %}
-  <table style="padding: 1%;">
-  {{ form.as_table }}
-  </table>
-  <p>
-  <button type="submit">Login</button>
-  </p>
-  <input type="hidden" name="next" value="{{next}}"/>
- </form>
- {# If you have a sign-up page, then add a link here #}
-</body>
+    <body>
+        <h1>Login</h1>
+        <form method="post">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            <input type="submit" value="Login" />
+            <input type="hidden" name="next" value="{{next}}"/>
+        </form>
+        <form action="{% url 'signup' %}" method="get">
+            <input type="submit" value="Signup" />
+        </form>
+    </body>
 </html>
