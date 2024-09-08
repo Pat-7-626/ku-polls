@@ -42,7 +42,10 @@ class Question(models.Model):
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)
+
+    def votes(self) -> int:
+        """Return the total number of votes for a choice."""
+        return self.objects.filter(choice=self).count()
 
     def __str__(self):
         return self.choice_text
@@ -54,4 +57,4 @@ class Vote(models.Model):
     choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
 
     def __str__(self):
-        pass
+        return f"{self.user} voted for {self.choice}"
