@@ -45,10 +45,8 @@ class ResultsView(generic.DetailView):
 @login_required
 def vote(request, question_id):
     """Vote for one of the answers to a question."""
-    user = request.user
-    print("current user is", user.id, "login", user.username)
-    print("Real name:", user.first_name, user.last_name)
     question = get_object_or_404(Question, pk=question_id)
+
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
@@ -74,6 +72,4 @@ def vote(request, question_id):
         # Does not have to vote yet
         # Auto save
         messages.success(request, f"Your vote was changed to '{selected_choice.choice_text}'")
-    selected_choice.votes = F("votes") + 1
-    selected_choice.save()
     return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
