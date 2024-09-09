@@ -18,7 +18,7 @@
 <form action="{% url 'polls:vote' question.id %}" method="post">
     {% csrf_token %}
     <fieldset>
-        <legend><h2>{{ question.question_text }}</h2></legend>
+        <h2>{{ question.question_text }}</h2>
         {% if messages %}
         <ul class="messages">
             {% for msg in messages %}
