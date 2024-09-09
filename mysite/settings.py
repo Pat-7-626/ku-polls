@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY', default='fake-secret-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool, default=False)
@@ -142,36 +142,35 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
-
     'formatters': {
-        'verbose': {
-            'format': '[{asctime}] {levelname} {name}: {message}',
+        'details': {
+            'format': '{levelname} {asctime} {module} {message}',
             'style': '{',
         },
         'simple': {
-            'format': '{asctime} {module} {levelname} {message}',
+            'format': '{levelname} {message}',
             'style': '{',
         },
     },
-
     'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'polls.log',
+            'formatter': 'details',
+        },
         'console': {
+            'level': 'INFO',
             'class': 'logging.StreamHandler',
-            'level': 'DEBUG',
-            'formatter': 'verbose',
+            'formatter': 'simple',
         },
     },
-
     'loggers': {
         'polls': {
-            'level': 'DEBUG',
-            'handlers': ['console'],
-            'propagate': False,
-        },
-        'polls.views': {
-            'level': 'DEBUG',
-            'handlers': ['console'],
-            'propagate': False,
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
         },
     },
 }
+
