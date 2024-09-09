@@ -8,7 +8,12 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.signals import user_logged_in, user_logged_out, user_login_failed
+from django.dispatch import receiver
 from .models import Choice, Question, Vote
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class IndexView(generic.ListView):
@@ -27,6 +32,21 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Question
     template_name = 'polls/detail.html'
+
+    def get_context_data(self, **kwargs):
+        """Display previous vote if exists"""
+        messages.get_messages(self.request).used = True
+        question = self.get_object()
+        context = {'question': question}
+        user = self.request.user
+        if user.is_authenticated:
+            try:
+                vote = Vote.objects.get(user=user, choice__question=question)
+                selected_choice = vote.choice
+                messages.success(self.request, f"Your current vote '{selected_choice.choice_text}'")
+            except Vote.DoesNotExist:
+                pass
+        return context
 
     def get_queryset(self):
         """
@@ -107,3 +127,5 @@ def get_client_ip(request):
     else:
         ip = request.META.get('REMOTE_ADDR')
     return ip
+
+

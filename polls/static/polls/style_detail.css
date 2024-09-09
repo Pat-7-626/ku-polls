@@ -45,7 +45,6 @@ label {
 }
 
 .messages {
-    list-style-type: none;
     color: plum;
     font-weight: bold;
 }

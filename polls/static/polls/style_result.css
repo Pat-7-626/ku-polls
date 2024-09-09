@@ -60,7 +60,6 @@ input[type="submit"]:hover {
 }
 
 .messages {
-    list-style-type: none;
     color: aquamarine;
     font-weight: bold;
 }
