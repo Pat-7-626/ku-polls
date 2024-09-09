@@ -129,3 +129,18 @@ def get_client_ip(request):
     return ip
 
 
+@receiver(user_logged_in)
+def log_user_login(request, user, **kwargs):
+    ip_add = get_client_ip(request)
+    logger.info(f"User {user.username} logged in. IP: {ip_add}")
+
+
+@receiver(user_logged_out)
+def log_user_logout(request, user, **kwargs):
+    logger.info(f"User {user.username} logged out")
+
+
+@receiver(user_login_failed)
+def log_unsuccessful_login(credentials, request, **kwargs):
+    logger.warning(
+        f"Unsuccessful login attempt for username: {credentials.get('username')}")
