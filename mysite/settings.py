@@ -128,6 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # For serving static files in production
@@ -152,17 +153,25 @@ LOGGING = {
             'style': '{',
         },
     },
+    'filters': {
+        'ignore_redundant_login': {
+            '()': 'django.utils.log.CallbackFilter',
+            'callback': lambda record: not (record.levelname == 'INFO' and 'logged in from' in record.getMessage()),
+        },
+    },
     'handlers': {
         'file': {
             'level': 'INFO',
             'class': 'logging.FileHandler',
             'filename': 'polls.log',
             'formatter': 'details',
+            'filters': ['ignore_redundant_login'],
         },
         'console': {
             'level': 'INFO',
             'class': 'logging.StreamHandler',
             'formatter': 'simple',
+            'filters': ['ignore_redundant_login'],
         },
     },
     'loggers': {

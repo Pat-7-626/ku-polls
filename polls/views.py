@@ -8,7 +8,13 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.signals import (user_logged_in, user_logged_out,
+                                         user_login_failed)
+from django.dispatch import receiver
 from .models import Choice, Question, Vote
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class IndexView(generic.ListView):
@@ -28,6 +34,23 @@ class DetailView(generic.DetailView):
     model = Question
     template_name = 'polls/detail.html'
 
+    def get_context_data(self, **kwargs):
+        """Display previous vote if exists"""
+        messages.get_messages(self.request).used = True
+        question = self.get_object()
+        context = {'question': question}
+        user = self.request.user
+        if user.is_authenticated:
+            try:
+                vote = Vote.objects.get(user=user, choice__question=question)
+                selected_choice = vote.choice
+                messages.success(self.request,
+                                 f"Your current vote "
+                                 f"'{selected_choice.choice_text}'")
+            except Vote.DoesNotExist:
+                pass
+        return context
+
     def get_queryset(self):
         """
         Excludes any questions that aren't published yet
@@ -46,18 +69,19 @@ class ResultsView(generic.DetailView):
 @login_required
 def vote(request, question_id):
     """Vote for one of the answers to a question."""
-    question = get_object_or_404(Question, pk=question_id)
     messages.get_messages(request).used = True
+    question = get_object_or_404(Question, pk=question_id)
+    this_user = request.user
+    ip_add = get_client_ip(request)
 
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
-        # Redisplay the question voting form.
+        logger.error(f"An error occurred for User {this_user.username} "
+                     f"(IP: {ip_add}) while updating the vote by not "
+                     f"selecting a choice.")
         messages.error(request, "You didn't select a choice.")
         return redirect('polls:detail', pk=question_id)
-
-    # Reference to the current user
-    this_user = request.user
 
     # Get the user's vote
     try:
@@ -66,12 +90,20 @@ def vote(request, question_id):
         # User has a vote for this question! Update his choice.
         vote.choice = selected_choice
         vote.save()
-        messages.success(request, f"Your vote was changed to '{selected_choice.choice_text}'")
+        messages.success(request, f"Your vote was changed to "
+                                  f"'{selected_choice.choice_text}'")
+        logger.info(f"User {this_user.username} (IP: {ip_add}) changed "
+                    f"the vote in '{question}' to "
+                    f"'{selected_choice.choice_text}'")
     except Vote.DoesNotExist:
         Vote.objects.create(user=this_user, choice=selected_choice)
         # Does not have to vote yet
         # Auto save
-        messages.success(request, f"Your vote was submitted to '{selected_choice.choice_text}'")
+        messages.success(request, f"Your vote was submitted to "
+                                  f"'{selected_choice.choice_text}'")
+        logger.info(f"User {this_user.username} (IP: {ip_add}) submitted "
+                    f"the vote in '{question}' to "
+                    f"'{selected_choice.choice_text}'")
     return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
 
@@ -107,3 +139,23 @@ def get_client_ip(request):
     else:
         ip = request.META.get('REMOTE_ADDR')
     return ip
+
+
+@receiver(user_logged_in)
+def log_user_login(request, user, **kwargs):
+    ip_add = get_client_ip(request)
+    logger.info(f"User {user.username} (IP: {ip_add}) logged in.")
+
+
+@receiver(user_logged_out)
+def log_user_logout(request, user, **kwargs):
+    ip_add = get_client_ip(request)
+    logger.info(f"User {user.username} (IP: {ip_add}) logged out.")
+
+
+@receiver(user_login_failed)
+def log_unsuccessful_login(credentials, request, **kwargs):
+    ip_add = get_client_ip(request)
+    logger.warning(
+        f"Unsuccessful login attempt for User {credentials.get('username')} "
+        f"(IP: {ip_add})")

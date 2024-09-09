@@ -17,8 +17,6 @@ h1 {
 
 h2 {
     color: white;
-    padding: 2% 0%;
-    white-space: nowrap;
 }
 
 body {
@@ -45,7 +43,6 @@ label {
 }
 
 .messages {
-    list-style-type: none;
     color: plum;
     font-weight: bold;
 }
