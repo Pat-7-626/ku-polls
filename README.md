@@ -2,6 +2,9 @@
 ---
 
 ## KU Polls Project
+
+[![Django CI](https://github.com/Pat-7-626/ku-polls/actions/workflows/django.yml/badge.svg)](https://github.com/Pat-7-626/ku-polls/actions/workflows/django.yml)
+
 Author: Pattharamon Dumrongkittikule 6610545472  
 Revised: 25-08-2024
 
