@@ -5,7 +5,7 @@ from polls.models import Question
 import datetime
 
 
-def create_question(question_text, days):
+def create_question(question_text, days, start=None, end=None):
     """
     Create a question with the given `question_text` and published the
     given number of `days` offset to now (negative for questions published
@@ -13,7 +13,15 @@ def create_question(question_text, days):
     """
     now = timezone.localtime()
     time = now + datetime.timedelta(days=days)
-    return Question.objects.create(question_text=question_text, pub_date=time)
+    if start and end:
+        time_start = now + datetime.timedelta(days=start)
+        time_end = now + datetime.timedelta(days=end)
+        return Question.objects.create(question_text=question_text,
+                                       pub_date=time_start,
+                                       end_date=time_end)
+    else:
+        return Question.objects.create(question_text=question_text,
+                                       pub_date=time)
 
 
 def create_question_2(question_text, start, end):
@@ -138,7 +146,7 @@ class IsPublishedTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
             list(response.context['latest_question_list']),
-            [question1, question2],
+            [question2, question1],
         )
 
     def test_past_date(self):
