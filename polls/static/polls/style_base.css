@@ -4,9 +4,10 @@ html, body {
     margin: 0;
 }
 
-body {
-    background: url("../images/background.png") no-repeat center center fixed;
-    background-size: cover;
+h1 {
+    color: white;
+    padding: 1%;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 input[type="submit"] {
@@ -21,15 +22,4 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: rgba(0, 0, 0, 1);
-}
-
-a {
-    text-decoration: none;
-    font-size: x-large;
-    color: white;
-    font-weight: bold;
-}
-
-a:hover {
-    color: aquamarine;
 }

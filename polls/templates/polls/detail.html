@@ -1,19 +1,7 @@
+{% include 'polls/base.html' %}
+
 {% load static %}
 <link rel="stylesheet" href="{% static 'polls/style_detail.css' %}">
-
-{% if user.is_authenticated %}
-    <h1>KU Polls | Welcome back, {{ user.username }}</h1>
-    <form action="{% url 'logout' %}" method="post"> 
-        {% csrf_token %} 
-        <input type="submit" value="Logout" />
-    </form>
-{% else %}
-    <h1>KU Polls | Please login to vote</h1>
-    <form action="{% url 'login' %}" method="post"> 
-        {% csrf_token %} 
-        <input type="submit" value="Login" />
-    </form>
-{% endif %}
 
 <form action="{% url 'polls:vote' question.id %}" method="post">
     {% csrf_token %}
