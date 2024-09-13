@@ -27,7 +27,7 @@ class IndexView(generic.ListView):
         published in the future or that have already been closed.
         """
         questions = Question.objects.order_by('-pub_date')
-        return [question for question in questions if question.can_vote()][:5]
+        return [question for question in questions if question.can_vote()]
 
 
 class DetailView(generic.DetailView):
