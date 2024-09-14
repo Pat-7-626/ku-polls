@@ -17,10 +17,11 @@ h1 {
 
 .instructions {
     color: aquamarine;
-    margin: 0.5% 5% 0.5% 0.5%;
+    margin: 1% 5% 0.5% 0.5%;
     padding-left: 1%;
     line-height: 1.5;
     background-color: rgba(0,0,0,0.5);
+    font-size: medium;
 }
 
 strong {
@@ -40,7 +41,6 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: rgba(0, 0, 0, 1);
-    color: aquamarine;
 }
 
 label {
@@ -51,4 +51,15 @@ label {
     list-style-type: none;
     color: plum;
     font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    font-size: large;
+    color: white;
+    font-weight: bold;
+}
+
+a:hover {
+    color: aquamarine;
 }
