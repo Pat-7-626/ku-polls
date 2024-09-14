@@ -2,9 +2,9 @@ name: Django CI
 
 on:
   push:
-    branches: [ "main", "iteration4" ]
+    branches: "*"
   pull_request:
-    branches: [ "main", "iteration4" ]
+    branches: "*"
 
 env:
   SECRET_KEY = 'fake-secret-key'
