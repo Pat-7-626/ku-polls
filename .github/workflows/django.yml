@@ -6,6 +6,12 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  SECRET_KEY = 'fake-secret-key'
+  DEBUG = True
+  ALLOWED_HOSTS = localhost,127.0.0.1,::1,testserver
+  TIME_ZONE = Asia/Bangkok
+
 jobs:
   build:
 
@@ -25,6 +31,12 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+    - name: Environment Variables
+      run: |
+        echo $SECRET_KEY
+        echo $DEBUG
+        echo $ALLOWED_HOSTS
+        echo $TIME_ZONE
     - name: Run Tests
       run: |
         python manage.py test
