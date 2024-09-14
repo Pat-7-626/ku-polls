@@ -10,7 +10,7 @@ The application to conduct online polls and surveys based on the [Django Tutoria
 This application was created as a part of the [Individual Software Process](https://cpske.github.io/ISP) course at [Kasetsart University](https://www.ku.ac.th).
 
 Author: Pattharamon Dumrongkittikule 6610545472  
-Revised: 25-08-2024
+Revised: 14-09-2024
 
 ---
 
