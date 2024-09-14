@@ -2,15 +2,15 @@ name: Django CI
 
 on:
   push:
-    branches: "*"
+    branches: [ "**" ]
   pull_request:
     branches: [ "main" ]
 
 env:
-  SECRET_KEY = 'your_actual_secret_key'
-  DEBUG = 'True'
-  ALLOWED_HOSTS = '*'
-  TIME_ZONE = 'Asia/Bangkok'
+  DEBUG: True
+  ALLOWED_HOST: '*'
+  TIME_ZONE: 'Asia/Bangkok'
+  SECRET_KEY: ${{secrets.SECRET_KEY}}
 
 jobs:
   build:
@@ -22,27 +22,15 @@ jobs:
         python-version: [3.11]
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
-
+    - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-
-    - name: Environment Variables
-      run: |
-        env:
-          DEBUG: $DEBUG    
-          SECRET_KEY: $SECRET_KEY
-          ALLOWED_HOSTS: $ALLOWED_HOSTS
-          TIME_ZONE: $TIME_ZONE
-
     - name: Run Tests
       run: |
         python manage.py test
