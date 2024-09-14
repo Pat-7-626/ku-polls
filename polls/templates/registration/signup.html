@@ -1,7 +1,9 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'registration/style_signup.css' %}">
 
-<h1>Register</h1>
+<h1>
+    Register <a href="{% url 'login' %}" class="login-link">(Back to Login hare)</a>
+</h1>
 
 {% if messages %}
     <ul class="messages">
