@@ -23,13 +23,13 @@ python -m venv .venv
 ### on Window
 
 ```bash
-env\Scripts\activate
+.venv\Scripts\activate
  ```
 
 ### on MacOS / Linux
 
 ```bash
-source env/bin/activate
+source .venv/bin/activate
 ```
 
 ---
