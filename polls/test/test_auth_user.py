@@ -80,21 +80,22 @@ class UserAuthTest(django.test.TestCase):
         self.assertRedirects(response, reverse(settings.LOGIN_REDIRECT_URL))
 
     def test_auth_required_to_vote(self):
-        """Authentication is required to submit a vote."""
+        """Authentication is required to submit a vote.
+
+        As an unauthenticated user,
+        when I submit a vote for a question,
+        then I am redirected to the login page
+          or I receive a 403 response (FORBIDDEN)
+        """
         vote_url = reverse('polls:vote', args=[self.question.id])
+
+        # what choice to vote for?
         choice = self.question.choice_set.first()
+        # the polls detail page has a form, each choice is identified by its id
         form_data = {"choice": f"{choice.id}"}
-
         response = self.client.post(vote_url, form_data)
-
-        # Print debug information
-        print(f"Vote URL: {vote_url}")
-        print(f"Form Data: {form_data}")
-        print(f"Response Status: {response.status_code}")
-        print(f"Redirect Location: {response.get('Location', 'No Redirect')}")
-
+        # should be redirected to the login page
         login_url = reverse('login')
         login_with_next = f"{login_url}?next={vote_url}"
-
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)  # could be 303
         self.assertRedirects(response, login_with_next)
