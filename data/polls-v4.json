@@ -1,0 +1,329 @@
+[
+{
+  "model": "polls.question",
+  "pk": 4,
+  "fields": {
+    "question_text": "What is the meaning of life in your opinion?",
+    "pub_date": "2024-09-13T20:33:34Z",
+    "end_date": null
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 6,
+  "fields": {
+    "question_text": "What is the meaning of death in your opinion?",
+    "pub_date": "2024-09-13T20:19:05Z",
+    "end_date": null
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 7,
+  "fields": {
+    "question_text": "Do you believe personality is shaped more by genetics or environments?",
+    "pub_date": "2024-09-13T20:46:15Z",
+    "end_date": null
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 8,
+  "fields": {
+    "question_text": "Is it better to know the truth, even if it’s painful, or remain blissfully ignorant?",
+    "pub_date": "2024-09-13T22:39:35Z",
+    "end_date": null
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 9,
+  "fields": {
+    "question_text": "What is more important, freedom or security?",
+    "pub_date": "2024-09-14T11:29:45Z",
+    "end_date": null
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 10,
+  "fields": {
+    "question_text": "What kind of learner are you?",
+    "pub_date": "2024-09-14T11:33:43Z",
+    "end_date": null
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 11,
+  "fields": {
+    "question_text": "How do you usually deal with stress?",
+    "pub_date": "2024-09-14T11:41:13Z",
+    "end_date": null
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 9,
+  "fields": {
+    "question": 4,
+    "choice_text": "Existentialism: Life has no inherent meaning, we create our own purpose through our choices and actions."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 10,
+  "fields": {
+    "question": 4,
+    "choice_text": "Absurdism: Life is inherently meaningless, but we should embrace and find joy in the struggle to understand it."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 11,
+  "fields": {
+    "question": 4,
+    "choice_text": "Utilitarianism: The meaning of life is to maximize happiness and minimize suffering for the most people."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 12,
+  "fields": {
+    "question": 4,
+    "choice_text": "Theism: Life's meaning comes from following a divine plan or higher power."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 13,
+  "fields": {
+    "question": 4,
+    "choice_text": "Nihilism: Life has no inherent meaning or value."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 16,
+  "fields": {
+    "question": 6,
+    "choice_text": "It is the end of consciousness and existence of any life."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 17,
+  "fields": {
+    "question": 6,
+    "choice_text": "It is a transition to another state of being or afterlife."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 18,
+  "fields": {
+    "question": 6,
+    "choice_text": "It is to give life meaning by making it finite."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 19,
+  "fields": {
+    "question": 6,
+    "choice_text": "It is a concept we impose on reality to make sense of it."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 20,
+  "fields": {
+    "question": 7,
+    "choice_text": "Completely genetics."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 21,
+  "fields": {
+    "question": 7,
+    "choice_text": "Mostly genetics."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 22,
+  "fields": {
+    "question": 7,
+    "choice_text": "Equally genetics and environments."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 23,
+  "fields": {
+    "question": 7,
+    "choice_text": "Mostly environments."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 24,
+  "fields": {
+    "question": 7,
+    "choice_text": "Completely environments."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 25,
+  "fields": {
+    "question": 8,
+    "choice_text": "I’d prefer to know the truth, it's morally important."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 26,
+  "fields": {
+    "question": 8,
+    "choice_text": "I’d prefer to know the truth, it's logically important."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 27,
+  "fields": {
+    "question": 8,
+    "choice_text": "I’d prefer not to know the painful truth."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 28,
+  "fields": {
+    "question": 8,
+    "choice_text": "It depends on the situation."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 29,
+  "fields": {
+    "question": 9,
+    "choice_text": "Completely freedom, we should have the right to make our own choices."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 30,
+  "fields": {
+    "question": 9,
+    "choice_text": "Mostly freedom, security without freedom is oppression."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 31,
+  "fields": {
+    "question": 9,
+    "choice_text": "Both are equally important and should be balanced."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 32,
+  "fields": {
+    "question": 9,
+    "choice_text": "Mostly security, freedom without security is dangerous."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 33,
+  "fields": {
+    "question": 9,
+    "choice_text": "Completly security, safety and stability matter most."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 34,
+  "fields": {
+    "question": 10,
+    "choice_text": "Visual, I learn best by seeing diagrams, images, and reading."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 35,
+  "fields": {
+    "question": 10,
+    "choice_text": "Auditory, I learn best by listening to explanations or discussions."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 36,
+  "fields": {
+    "question": 10,
+    "choice_text": "Kinesthetic, I need to engage physically and learn by doing."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 37,
+  "fields": {
+    "question": 10,
+    "choice_text": "Reading and writing,  I need to read and take notes to process information."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 38,
+  "fields": {
+    "question": 10,
+    "choice_text": "A combination of multiple learning styles."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 39,
+  "fields": {
+    "question": 11,
+    "choice_text": "Exercising or staying active."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 40,
+  "fields": {
+    "question": 11,
+    "choice_text": "Talking to friends or family."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 41,
+  "fields": {
+    "question": 11,
+    "choice_text": "Meditating or practicing mindfulness."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 42,
+  "fields": {
+    "question": 11,
+    "choice_text": "Distracting myself with entertainment."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 43,
+  "fields": {
+    "question": 11,
+    "choice_text": "Ignoring it until it passes."
+  }
+}
+]

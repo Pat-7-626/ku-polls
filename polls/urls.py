@@ -1,3 +1,5 @@
+"""urls.py for poll app."""
+
 from django.urls import path
 from . import views
 

@@ -1,21 +1,22 @@
 """Tests of user authentication.
 
-   Put this file in a subdirectory of your ku-polls project,
-   for example, a directory named "auth".
-   Then run: manage.py test auth
-
+Put this file in a subdirectory of your ku-polls project, for example,
+a directory named "auth".
+Then run: manage.py test auth.
 """
+
 import django.test
 from django.urls import reverse
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate  # to "login" a user using code
 from polls.models import Question, Choice
 from mysite import settings
 
 
 class UserAuthTest(django.test.TestCase):
+    """Tests of user authentication."""
 
     def setUp(self):
+        """Set up test variables."""
         # superclass setUp creates a Client object and initializes test
         # database
         super().setUp()

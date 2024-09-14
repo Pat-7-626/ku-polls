@@ -25,38 +25,18 @@ td {
 
 td.choice-text {
     width: 90%;
+    background-color: rgb(0, 0, 0, 0);
+    color: aquamarine;
 }
 
 td.choice-votes {
     width: 10%;
-}
-
-.choice-votes {
     background-color: rgba(0, 0, 0, 1);
-}
-
-h1 {
-    color: white;
-    padding: 1%;
-    background-color: rgba(0, 0, 0, 0.5);
+    color: aquamarine;
 }
 
 h2 {
     color: white;
-}
-
-input[type="submit"] {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    margin: 1%;
-    border-radius: 1%;
-    cursor: pointer;
-    padding: 0.5% 1%;
-}
-
-input[type="submit"]:hover {
-    background-color: rgba(0, 0, 0, 1);
 }
 
 .messages {
@@ -66,7 +46,7 @@ input[type="submit"]:hover {
 
 fieldset {
     border: solid aquamarine;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.5);
 }
 
 .inline-form {
@@ -85,4 +65,5 @@ fieldset {
 
 .inline-form input[type="submit"]:hover {
     background-color: rgba(0, 0, 0, 1);
+    color: aquamarine;
 }

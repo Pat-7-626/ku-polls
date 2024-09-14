@@ -1,0 +1,20 @@
+.base-content h1 {
+    color: white;
+    padding: 1%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.base-content input[type="submit"] {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    margin: 1%;
+    border-radius: 1%;
+    cursor: pointer;
+    padding: 0.5% 1%;
+}
+
+.base-content input[type="submit"]:hover {
+    background-color: rgba(0, 0, 0, 1);
+    color: aquamarine;
+}

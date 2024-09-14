@@ -1,27 +1,18 @@
+{% include 'polls/base.html' %}
+
 {% load static %}
 <link rel="stylesheet" href="{% static 'polls/style_index.css' %}">
 
 {% if latest_question_list %}
-        {% if user.is_authenticated %}
-            <h1>KU Polls | Welcome back, {{ user.username }}</h1>
-            <form action="{% url 'logout' %}" method="post"> 
-                {% csrf_token %} 
-                <input type="submit" value="Logout" />
-            </form>
-        {% else %}
-            <h1>KU Polls | Please login to vote</h1>
-            <form action="{% url 'login' %}" method="post"> 
-                {% csrf_token %} 
-                <input type="submit" value="Login" />
-            </form>
-        {% endif %}
     <ul style="list-style-type: none;">
         {% for question in latest_question_list %}
             <li>
-                <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
-                <form action="{% url 'polls:results' question.id %}" method="get">
-                    <input type="submit" value="Results" />
-                </form>
+                <fieldset>
+                    <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+                    <form action="{% url 'polls:results' question.id %}" method="get" class="result">
+                        <input type="submit" value="Results"/>
+                    </form>
+                </fieldset>
             </li>
         {% endfor %}
     </ul>

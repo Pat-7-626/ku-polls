@@ -1,3 +1,5 @@
+"""middleware.py for logging setting."""
+
 import logging
 from django.utils.deprecation import MiddlewareMixin
 from django.contrib.auth.signals import user_logged_in
@@ -22,8 +24,10 @@ def get_client_ip(request):
 
 
 class LogUserLoginMiddleware(MiddlewareMixin):
+    """Log user login with IP address."""
+
     @staticmethod
     def process_request(request):
-        """Process request middleware"""
+        """Process request middleware."""
         if request.user.is_authenticated:
             user_logged_in.connect(log_user_login)
