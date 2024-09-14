@@ -1,3 +1,5 @@
+"""views.py for poll app."""
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, redirect
 from django.utils import timezone
@@ -18,24 +20,25 @@ logger = logging.getLogger(__name__)
 
 
 class IndexView(generic.ListView):
+    """Index view."""
+
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
-        """
-        Return the last five published questions, not including those set to be
-        published in the future or that have already been closed.
-        """
+        """Return the all published questions that are not closed."""
         questions = Question.objects.order_by('-pub_date')
         return [question for question in questions if question.can_vote()]
 
 
 class DetailView(generic.DetailView):
+    """Detail view."""
+
     model = Question
     template_name = 'polls/detail.html'
 
     def get_context_data(self, **kwargs):
-        """Display previous vote if exists"""
+        """Display previous vote if exists."""
         messages.get_messages(self.request).used = True
         question = self.get_object()
         context = {'question': question}
@@ -52,16 +55,15 @@ class DetailView(generic.DetailView):
         return context
 
     def get_queryset(self):
-        """
-        Excludes any questions that aren't published yet
-        or that have already been closed.
-        """
+        """Excludes any questions that aren't published or is closed."""
         return (Question.objects.filter(  # use can_vote logic
             pub_date__lte=timezone.localtime()).filter(
             Q(end_date__gte=timezone.localtime()) | Q(end_date__isnull=True)))
 
 
 class ResultsView(generic.DetailView):
+    """results view."""
+
     model = Question
     template_name = 'polls/results.html'
 
@@ -143,18 +145,21 @@ def get_client_ip(request):
 
 @receiver(user_logged_in)
 def log_user_login(request, user, **kwargs):
+    """Log for login."""
     ip_add = get_client_ip(request)
     logger.info(f"User {user.username} (IP: {ip_add}) logged in.")
 
 
 @receiver(user_logged_out)
 def log_user_logout(request, user, **kwargs):
+    """Log for logout."""
     ip_add = get_client_ip(request)
     logger.info(f"User {user.username} (IP: {ip_add}) logged out.")
 
 
 @receiver(user_login_failed)
 def log_unsuccessful_login(credentials, request, **kwargs):
+    """Log for login failed."""
     ip_add = get_client_ip(request)
     logger.warning(
         f"Unsuccessful login attempt for User {credentials.get('username')} "
