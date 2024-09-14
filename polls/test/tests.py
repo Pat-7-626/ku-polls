@@ -146,7 +146,7 @@ class IsPublishedTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
             list(response.context['latest_question_list']),
-            [question2, question1],
+            [question1, question2],
         )
 
     def test_past_date(self):
