@@ -8,7 +8,7 @@ on:
 
 env:
   SECRET_KEY = 'fake-secret-key'
-  DEBUG = True
+  DEBUG = 'True'
   ALLOWED_HOSTS = localhost,127.0.0.1,::1,testserver
   TIME_ZONE = Asia/Bangkok
 
