@@ -7,10 +7,12 @@
     <ul style="list-style-type: none;">
         {% for question in latest_question_list %}
             <li>
-                <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
-                <form action="{% url 'polls:results' question.id %}" method="get">
-                    <input type="submit" value="Results" />
-                </form>
+                <fieldset>
+                    <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+                    <form action="{% url 'polls:results' question.id %}" method="get" class="result">
+                        <input type="submit" value="Results"/>
+                    </form>
+                </fieldset>
             </li>
         {% endfor %}
     </ul>

@@ -37,6 +37,7 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: rgba(0, 0, 0, 1);
+    color: aquamarine;
 }
 
 .inline-form {
@@ -55,4 +56,5 @@ input[type="submit"]:hover {
 
 .inline-form input[type="submit"]:hover {
     background-color: rgba(0, 0, 0, 1);
+    color: aquamarine;
 }

@@ -30,6 +30,7 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: rgba(0, 0, 0, 1);
+    color: aquamarine;
 }
 
 label {
@@ -43,7 +44,7 @@ label {
 
 fieldset {
     border: solid plum;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.5);
 }
 
 .inline-form {
@@ -62,4 +63,5 @@ fieldset {
 
 .inline-form input[type="submit"]:hover {
     background-color: rgba(0, 0, 0, 1);
+    color: aquamarine;
 }
