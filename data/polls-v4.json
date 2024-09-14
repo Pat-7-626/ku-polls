@@ -30,7 +30,7 @@
   "model": "polls.question",
   "pk": 8,
   "fields": {
-    "question_text": "Is it better to know the truth, even if it’s painful, or remain blissfully ignorant?",
+    "question_text": "Is it better to know the truth, even if itï¿½s painful, or remain blissfully ignorant?",
     "pub_date": "2024-09-13T22:39:35Z",
     "end_date": null
   }
@@ -179,7 +179,7 @@
   "pk": 25,
   "fields": {
     "question": 8,
-    "choice_text": "I’d prefer to know the truth, it's morally important."
+    "choice_text": "Iï¿½d prefer to know the truth, it's morally important."
   }
 },
 {
@@ -187,7 +187,7 @@
   "pk": 26,
   "fields": {
     "question": 8,
-    "choice_text": "I’d prefer to know the truth, it's logically important."
+    "choice_text": "Iï¿½d prefer to know the truth, it's logically important."
   }
 },
 {
@@ -195,7 +195,7 @@
   "pk": 27,
   "fields": {
     "question": 8,
-    "choice_text": "I’d prefer not to know the painful truth."
+    "choice_text": "Iï¿½d prefer not to know the painful truth."
   }
 },
 {
