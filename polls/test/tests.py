@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.urls import reverse
 from polls.models import Question
 import datetime
+import time
 
 
 def create_question(question_text, days, start=None, end=None):
@@ -140,13 +141,14 @@ class IsPublishedTests(TestCase):
         """
         question1 = create_question_2(question_text="future question 1.",
                                       start=0, end=3)
+        time.sleep(5)
         question2 = create_question_2(question_text="future question 2.",
                                       start=0, end=5)
         response = self.client.get(reverse('polls:index'))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
             list(response.context['latest_question_list']),
-            [question1, question2],
+            [question2, question1],
         )
 
     def test_past_date(self):
