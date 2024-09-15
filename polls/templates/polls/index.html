@@ -8,7 +8,11 @@
         {% for question in latest_question_list %}
             <li>
                 <fieldset>
-                    <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+                    {% if question.is_closed %}
+                        <span>{{ question.question_text }} (Closed)</span>
+                    {%  else %}
+                        <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }} (Open)</a>
+                    {% endif %}
                     <form action="{% url 'polls:results' question.id %}" method="get" class="result">
                         <input type="submit" value="Results"/>
                     </form>
