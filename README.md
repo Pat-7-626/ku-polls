@@ -28,8 +28,8 @@ Admin Interface
 
 ---
 
-## Installation 
-   - [Installation.md](Installation.md) for installation.
+## Installation
+   - [Installation Guide](Installation.md) for installation.
 
 ---
 

@@ -1,4 +1,4 @@
-## Installation
+## Installation Guide
 
 ---
 
@@ -113,3 +113,11 @@ python manage.py test
 ```
 
 ---
+
+## Create an administration account
+
+```bash
+python manage.py createsuperuser
+```
+
+___
