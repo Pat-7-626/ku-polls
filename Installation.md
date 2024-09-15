@@ -13,7 +13,7 @@ cd ku-polls
 ## Create virtual environment
 
 ```bash
-python -m venv .venv
+python -m venv env
 ```
 
 ---
@@ -23,13 +23,13 @@ python -m venv .venv
 ### on Window
 
 ```bash
-.venv\Scripts\activate
+env\Scripts\activate
  ```
 
 ### on MacOS / Linux
 
 ```bash
-source .venv/bin/activate
+source env/bin/activate
 ```
 
 ---
@@ -61,10 +61,6 @@ cp sample.env .env
 ## Migrate database
 
 ```bash
-python manage.py makemigrations
-```
-
-```bash
 python manage.py migrate
 ```
 
@@ -72,16 +68,28 @@ python manage.py migrate
 
 ## Load data into database
 
+### Data for Question and Choices only (no Votes)
+
 ```bash
 python manage.py loaddata data/polls-v4.json
 ```
+
+### Data for Votes
 
 ```bash
 python manage.py loaddata data/users.json
 ```
 
+### The auth.user data in a file ```data/users.json```
+
 ```bash
 python manage.py loaddata data/votes-v4.json
+```
+
+### load all data files
+
+```bash
+python manage.py loaddata data/polls-v4.json data/votes-v4.json data/users.json
 ```
 
 ---

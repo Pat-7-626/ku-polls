@@ -54,9 +54,6 @@ python manage.py runserver
 
 ## Project Documents
 
----
-
-## Links to other docs and info
    - [Vision and Scope](../../wiki/Vision-and-Scope)
    - [Requirements](../../wiki/Requirements)
    - [Project Plan](../../wiki/Project-Plan)
