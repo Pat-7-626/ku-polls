@@ -41,12 +41,13 @@ class DetailView(generic.DetailView):
         """Display previous vote if exists."""
         messages.get_messages(self.request).used = True
         question = self.get_object()
-        context = {'question': question}
+        context = {'question': question, 'selected_choice_id': None}
         user = self.request.user
         if user.is_authenticated:
             try:
                 vote = Vote.objects.get(user=user, choice__question=question)
                 selected_choice = vote.choice
+                context['selected_choice_id'] = selected_choice.id
                 messages.success(self.request,
                                  f"Your current vote "
                                  f"'{selected_choice.choice_text}'")
