@@ -28,7 +28,7 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         """Return the all published questions that are not closed."""
         questions = Question.objects.order_by('-pub_date')
-        return [question for question in questions if question.can_vote()]
+        return [question for question in questions if question.is_published()]
 
 
 class DetailView(generic.DetailView):
