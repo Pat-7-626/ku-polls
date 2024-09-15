@@ -2,6 +2,14 @@
 
 ---
 
+## Clone the repository
+
+```bash
+git clone https://github.com/Pat-7-626/ku-polls.git
+```
+
+---
+
 ## Change the directory to the project directory
 
 ```bash
