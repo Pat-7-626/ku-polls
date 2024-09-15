@@ -51,3 +51,21 @@ fieldset {
     display: flex;
     justify-content: space-between;
 }
+
+span {
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+span:hover {
+    color: orangered;
+}
+
+p {
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+    text-align: center;
+}

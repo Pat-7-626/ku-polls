@@ -1,33 +1,22 @@
-"""middleware.py for logging setting."""
+"""middleware.py for Custom404Middleware."""
 
 import logging
-from django.utils.deprecation import MiddlewareMixin
-from django.contrib.auth.signals import user_logged_in
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
-logger = logging.getLogger('polls')
-
-
-def log_user_login(sender, request, user, **kwargs):
-    """Log user login with IP address."""
-    ip_addr = get_client_ip(request)
-    logger.info(f"{user.username} logged in from {ip_addr}")
+logger = logging.getLogger(__name__)
 
 
-def get_client_ip(request):
-    """Get the visitor’s IP address using request headers."""
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[0].strip()
-    else:
-        ip = request.META.get('REMOTE_ADDR')
-    return ip
+class Custom404Middleware:
+    """A class to go to index page when 404 occurred."""
+    def __init__(self, get_response):
+        """Get response."""
+        self.get_response = get_response
 
-
-class LogUserLoginMiddleware(MiddlewareMixin):
-    """Log user login with IP address."""
-
-    @staticmethod
-    def process_request(request):
-        """Process request middleware."""
-        if request.user.is_authenticated:
-            user_logged_in.connect(log_user_login)
+    def __call__(self, request):
+        """Go to index page when 404 occurred."""
+        response = self.get_response(request)
+        if response.status_code == 404:
+            logger.error("404 error occurred for URL: %s", request.path)
+            return HttpResponseRedirect(reverse('polls:index'))
+        return response

@@ -8,19 +8,11 @@ import datetime
 import time
 
 
-def create_question(question_text, days, start=None, end=None):
+def create_question(question_text, days):
     """Create a question with `question_text` and set pub date."""
     now = timezone.localtime()
     time = now + datetime.timedelta(days=days)
-    if start and end:
-        time_start = now + datetime.timedelta(days=start)
-        time_end = now + datetime.timedelta(days=end)
-        return Question.objects.create(question_text=question_text,
-                                       pub_date=time_start,
-                                       end_date=time_end)
-    else:
-        return Question.objects.create(question_text=question_text,
-                                       pub_date=time)
+    return Question.objects.create(question_text=question_text, pub_date=time)
 
 
 def create_question_2(question_text, start, end):
@@ -84,15 +76,16 @@ class QuestionDetailViewTests(TestCase):
     """tests for the detail view."""
 
     def test_future_question(self):
-        """The detail view of a future pub_date question returns 404."""
+        """The detail of a future pub_date question returns to the index."""
         future_question = create_question(question_text='Future question.',
                                           days=5)
         url = reverse('polls:detail', args=(future_question.id,))
         response = self.client.get(url)
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('polls:index'))
 
     def test_past_question(self):
-        """The detail view of a past pub_date question displays a question."""
+        """The detail of a past pub_date question displays a question."""
         past_question = create_question(question_text='Past Question.',
                                         days=-5)
         url = reverse('polls:detail', args=(past_question.id,))
@@ -151,7 +144,8 @@ class CanVoteTests(TestCase):
                                      start=-2, end=-1)
         url = reverse('polls:detail', args=(question.id,))
         response = self.client.get(url)
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('polls:index'))
 
     def test_cannot_vote_before_start_date(self):
         """Can not vote for questions before the start date."""
@@ -159,7 +153,8 @@ class CanVoteTests(TestCase):
                                      start=1, end=2)
         url = reverse('polls:detail', args=(question.id,))
         response = self.client.get(url)
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('polls:index'))
 
     def test_past_can_vote_between_period(self):
         """Can vote for questions between the polling period."""

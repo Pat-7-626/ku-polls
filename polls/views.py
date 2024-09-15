@@ -6,10 +6,10 @@ from django.utils import timezone
 from django.urls import reverse
 from django.views import generic
 from django.db.models import Q
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.signals import (user_logged_in, user_logged_out,
                                          user_login_failed)
 from django.dispatch import receiver
@@ -28,7 +28,7 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         """Return the all published questions that are not closed."""
         questions = Question.objects.order_by('-pub_date')
-        return [question for question in questions if question.can_vote()]
+        return [question for question in questions if question.is_published()]
 
 
 class DetailView(generic.DetailView):
@@ -41,12 +41,13 @@ class DetailView(generic.DetailView):
         """Display previous vote if exists."""
         messages.get_messages(self.request).used = True
         question = self.get_object()
-        context = {'question': question}
+        context = {'question': question, 'selected_choice_id': None}
         user = self.request.user
         if user.is_authenticated:
             try:
                 vote = Vote.objects.get(user=user, choice__question=question)
                 selected_choice = vote.choice
+                context['selected_choice_id'] = selected_choice.id
                 messages.success(self.request,
                                  f"Your current vote "
                                  f"'{selected_choice.choice_text}'")
@@ -68,22 +69,26 @@ class ResultsView(generic.DetailView):
     template_name = 'polls/results.html'
 
 
-@login_required
 def vote(request, question_id):
     """Vote for one of the answers to a question."""
     messages.get_messages(request).used = True
     question = get_object_or_404(Question, pk=question_id)
     this_user = request.user
     ip_add = get_client_ip(request)
-
-    try:
-        selected_choice = question.choice_set.get(pk=request.POST['choice'])
-    except (KeyError, Choice.DoesNotExist):
-        logger.error(f"An error occurred for User {this_user.username} "
-                     f"(IP: {ip_add}) while updating the vote by not "
-                     f"selecting a choice.")
-        messages.error(request, "You didn't select a choice.")
-        return redirect('polls:detail', pk=question_id)
+    user = request.user
+    if not user.is_authenticated:
+        detail_url = reverse('polls:detail', args=[question_id])
+        return redirect(f"{settings.LOGIN_URL}?next={detail_url}")
+    else:
+        try:
+            selected_choice = question.choice_set.get(
+                pk=request.POST['choice'])
+        except (KeyError, Choice.DoesNotExist):
+            logger.error(f"An error occurred for User {this_user.username} "
+                         f"(IP: {ip_add}) while updating the vote by not "
+                         f"selecting a choice.")
+            messages.error(request, "You didn't select a choice.")
+            return redirect('polls:detail', pk=question_id)
 
     # Get the user's vote
     try:

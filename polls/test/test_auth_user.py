@@ -89,6 +89,7 @@ class UserAuthTest(django.test.TestCase):
           or I receive a 403 response (FORBIDDEN)
         """
         vote_url = reverse('polls:vote', args=[self.question.id])
+        detail_url = reverse('polls:detail', args=[self.question.id])
 
         # what choice to vote for?
         choice = self.question.choice_set.first()
@@ -97,6 +98,6 @@ class UserAuthTest(django.test.TestCase):
         response = self.client.post(vote_url, form_data)
         # should be redirected to the login page
         login_url = reverse('login')
-        login_with_next = f"{login_url}?next={vote_url}"
+        login_with_next = f"{login_url}?next={detail_url}"
         self.assertEqual(response.status_code, 302)  # could be 303
         self.assertRedirects(response, login_with_next)
