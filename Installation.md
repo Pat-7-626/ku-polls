@@ -80,19 +80,19 @@ python manage.py migrate
 
 ## Load data into database
 
-### Data for Question and Choices only (no Votes)
+### Loading Questions and Choices (without Votes)
 
 ```bash
 python manage.py loaddata data/polls-v4.json
 ```
 
-### Data for Votes
+### Loading User Data
 
 ```bash
 python manage.py loaddata data/users.json
 ```
 
-### The auth.user data in a file ```data/users.json```
+### Loading Votes
 
 ```bash
 python manage.py loaddata data/votes-v4.json
