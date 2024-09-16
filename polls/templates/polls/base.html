@@ -12,12 +12,9 @@
             <a href="#" onclick="document.getElementById('logout-form').submit(); return false;">(Logout here)</a>
         </h1>
     {% else %}
-        <form id="login-form" action="{% url 'login' %}" method="post" style="display: none;">
-            {% csrf_token %}
-        </form>
         <h1>
             KU Polls | Please login to vote
-            <a href="#" onclick="document.getElementById('login-form').submit(); return false;">(Back to login here)</a>
+            <a href="{% url 'login' %}?next={{request.path}}">(Back to login here)</a>
         </h1>
     {% endif %}
 </div>
