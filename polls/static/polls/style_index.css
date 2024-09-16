@@ -11,7 +11,7 @@ body {
 
 .result input[type="submit"] {
     background-color: rgba(0, 0, 0, 0);
-    color: white;
+    color: plum;
     font-size: small;
     font-weight: bold;
     border: none;
@@ -47,7 +47,7 @@ fieldset {
     border: solid aquamarine;
     background-color: rgba(0,0,0,0.5);
     width: 70%;
-    margin: 3% auto;
+    margin: 0.5% auto;
     display: flex;
     justify-content: space-between;
 }

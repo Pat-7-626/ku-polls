@@ -14,8 +14,10 @@
                         <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }} (Open)</a>
                     {% endif %}
                     <form action="{% url 'polls:results' question.id %}" method="get" class="result">
-                        <input type="submit" value="Results"/>
+                        <input type="submit" value="Result"/>
                     </form>
+                </fieldset>
+                <fieldset style="border: hidden; background-color: rgba(0,0,0,0);">
                 </fieldset>
             </li>
         {% endfor %}
