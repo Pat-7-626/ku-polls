@@ -19,13 +19,13 @@
     color: aquamarine;
 }
 
-a {
+.base-content a {
     text-decoration: none;
     font-size: large;
-    color: aquamarine;
+    color: plum;
     font-weight: bold;
 }
 
-a:hover {
-    color: orangered;
+.base-content a:hover {
+    color: aquamarine;
 }
