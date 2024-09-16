@@ -56,10 +56,10 @@ label {
 a {
     text-decoration: none;
     font-size: large;
-    color: white;
+    color: aquamarine;
     font-weight: bold;
 }
 
 a:hover {
-    color: aquamarine;
+    color: orangered;
 }
