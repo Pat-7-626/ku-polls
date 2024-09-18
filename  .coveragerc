@@ -1,0 +1,16 @@
+[run]
+branch = True
+omit =
+    */usr/lib/*
+    */usr/local/*
+    */.local/*
+    */env/*
+    manage.py
+    */migrations/*
+    */__init__.py
+
+[report]
+exclude_lines =
+    def __str__
+    def __repr__
+    if __name__ == "__main__"
