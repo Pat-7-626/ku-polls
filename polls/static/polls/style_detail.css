@@ -18,32 +18,17 @@ body {
     background-size: cover;
 }
 
-input[type="submit"] {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    margin: 1%;
-    border-radius: 1%;
-    cursor: pointer;
-    padding: 0.5% 1%;
-}
-
-input[type="submit"]:hover {
-    background-color: rgba(0, 0, 0, 1);
-    color: aquamarine;
-}
-
 label {
     color: white;
 }
 
 .messages {
-    color: plum;
+    color: aquamarine;
     font-weight: bold;
 }
 
 fieldset {
-    border: solid plum;
+    border: solid aquamarine;
     background-color: rgba(0,0,0,0.5);
 }
 

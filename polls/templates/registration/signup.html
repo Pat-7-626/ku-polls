@@ -1,8 +1,9 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'registration/style_signup.css' %}">
+<link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
 
 <h1>
-    Register <a href="{% url 'login' %}" class="login-link">(Back to Login hare)</a>
+    Register <a href="{% url 'login' %}?next={{request.path}}">(Back to login here)</a>
 </h1>
 
 {% if messages %}

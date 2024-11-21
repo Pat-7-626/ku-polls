@@ -18,3 +18,14 @@
     background-color: rgba(0, 0, 0, 1);
     color: aquamarine;
 }
+
+.base-content a {
+    text-decoration: none;
+    font-size: large;
+    color: plum;
+    font-weight: bold;
+}
+
+.base-content a:hover {
+    color: aquamarine;
+}

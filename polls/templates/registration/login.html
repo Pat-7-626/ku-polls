@@ -1,10 +1,11 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'registration/style_login.css' %}">
+<link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
 
 <html>
     <body>
         <h1>Login</h1>
-        <form method="post">
+        <form method="post" class="inline-form">
             {% csrf_token %}
             <table>
                 <tr>
@@ -15,15 +16,14 @@
                     <td>{{ form.password.label_tag }}</td>
                     <td>{{ form.password }}</td>
                 </tr>
-                <input type="submit" value="Login" />
-                <input type="hidden" name="next" value="{{ next }}"/>
             </table>
+            <input type="submit" value="Login"/>
+            <input type="hidden" name="next" value="{{ next }}"/>
         </form>
-        
+
         <form action="{% url 'signup' %}" method="get" class="inline-form">
             <input type="submit" value="Signup" />
         </form>
-    
         <form action="{% url 'polls:index' %}" method="get" class="inline-form">
             <input type="submit" value="Go as Guest (Can not vote)" />
         </form>
