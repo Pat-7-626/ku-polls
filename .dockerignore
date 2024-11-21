@@ -1,0 +1,7 @@
+.git
+.venv
+venv
+.github
+settings.ini
+*.ps1
+__pycache__

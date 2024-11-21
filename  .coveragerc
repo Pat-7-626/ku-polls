@@ -6,7 +6,8 @@ omit =
     */.local/*
     */env/*
     manage.py
-    */migrations/*
+    polls/migrations/*
+    */mysite/*
     */__init__.py
 
 [report]
